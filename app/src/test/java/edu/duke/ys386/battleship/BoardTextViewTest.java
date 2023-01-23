@@ -2,6 +2,7 @@ package edu.duke.ys386.battleship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -40,6 +41,24 @@ public class BoardTextViewTest {
     // you should write two assertThrows here
     assertThrows(IllegalArgumentException.class, () -> new BoardTextView(wideBoard));
     assertThrows(IllegalArgumentException.class, () -> new BoardTextView(tallBoard));
+  }
+
+  @Test
+  public void test_display_by() {
+    Board<Character> b1 = new BattleShipBoard<Character>(2, 2);
+    BoardTextView view = new BoardTextView(b1);
+    String expectedHeader = "  0|1\n";
+    Ship<Character> s1 = new BasicShip(new Coordinate(1, 1));
+    Ship<Character> s2 = new BasicShip(new Coordinate(1, 0));
+    Ship<Character> s3 = new BasicShip(new Coordinate(0, 0));
+    assertTrue(b1.tryAddShip(s1));
+    assertTrue(b1.tryAddShip(s2));
+    assertTrue(b1.tryAddShip(s3));
+    String expected = expectedHeader +
+        "As| A\n" +
+        "Bs|sB\n" +
+        expectedHeader;
+    assertEquals(expected, view.displayMyOwnBoard());
   }
 
   private void emptyBoardHelper(int w, int h, String expectedHeader, String expectedBody) {

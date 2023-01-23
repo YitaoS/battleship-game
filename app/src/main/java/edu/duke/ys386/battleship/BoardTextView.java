@@ -33,19 +33,28 @@ public class BoardTextView {
   public String displayMyOwnBoard() {
     String header = makeHeader();
     StringBuilder ans = new StringBuilder(header);
-    for (int i = 0; i < toDisplay.getHeight(); i++) {
-      ans.append((char) ('A' + i));
-      String sep = "";
-      for (int j = 0; j < toDisplay.getWidth(); j++) {
-        ans.append(sep);
-        ans.append(" ");
-        sep = "|";
-      }
-      ans.append((char) ('A' + i));
-      ans.append('\n');
-    }
+    makeBody(ans);
     ans.append(header);
     return ans.toString(); // this is a placeholder for the moment
+  }
+
+  private void makeBody(StringBuilder ans) {
+    for (int row = 0; row < toDisplay.getHeight(); row++) {
+      ans.append((char) ('A' + row));
+      String sep = "";
+      for (int column = 0; column < toDisplay.getWidth(); column++) {
+        ans.append(sep);
+        Character curChar = toDisplay.whatIsAt(new Coordinate(row, column));
+        if (curChar != null) {
+          ans.append(curChar);
+        } else {
+          ans.append(" ");
+        }
+        sep = "|";
+      }
+      ans.append((char) ('A' + row));
+      ans.append('\n');
+    }
   }
 
   /**
