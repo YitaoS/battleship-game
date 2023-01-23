@@ -43,14 +43,19 @@ public class PlacementTest {
 
   @Test
   public void test_string_constructor_error_cases() {
-    assertThrows(IllegalArgumentException.class, () -> new Coordinate("00"));
-    assertThrows(IllegalArgumentException.class, () -> new Coordinate("AA"));
-    assertThrows(IllegalArgumentException.class, () -> new Coordinate("@0"));
-    assertThrows(IllegalArgumentException.class, () -> new Coordinate("[0"));
-    assertThrows(IllegalArgumentException.class, () -> new Coordinate("A/"));
-    assertThrows(IllegalArgumentException.class, () -> new Coordinate("A:"));
-    assertThrows(IllegalArgumentException.class, () -> new Coordinate("A"));
-    assertThrows(IllegalArgumentException.class, () -> new Coordinate("A12"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("00v"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("AAV"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("@0v"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("[0H"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A/h"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A:h"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("6h"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A8"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A3E"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A5r"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A:h"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("Ah"));
+    assertThrows(IllegalArgumentException.class, () -> new Placement("A12h"));
   }
 
   @Test
