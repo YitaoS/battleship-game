@@ -11,12 +11,46 @@ public class PlacementTest {
     Coordinate c2 = new Coordinate(2, 5);
     Placement p1 = new Placement(c1, 'v');
     Placement p2 = new Placement(c2, 'h');
+
     assertEquals(p1.getWhere(), c1);
     assertEquals(p2.getWhere(), c2);
     assertEquals(p1.getOrientation(), 'V');
     assertEquals(p2.getOrientation(), 'H');
     assertThrows(IllegalArgumentException.class, () -> new Placement(c1, '7'));
     assertThrows(IllegalArgumentException.class, () -> new Placement(c1, 'a'));
+  }
+
+  @Test
+  void test_string_constructor_valid_cases() {
+    Placement p1 = new Placement("B3v");
+    Coordinate c1 = new Coordinate(1, 3);
+    assertEquals(p1.getWhere(), c1);
+    assertEquals(p1.getOrientation(), 'V');
+    Placement p2 = new Placement("D5V");
+    Coordinate c2 = new Coordinate(3, 5);
+    assertEquals(p2.getWhere(), c2);
+    assertEquals(p2.getOrientation(), 'V');
+    Placement p3 = new Placement("A9h");
+    Coordinate c3 = new Coordinate(0, 9);
+    assertEquals(p3.getWhere(), c3);
+    assertEquals(p3.getOrientation(), 'H');
+    Placement p4 = new Placement("Z0H");
+    Coordinate c4 = new Coordinate(25, 0);
+    assertEquals(p4.getWhere(), c4);
+    assertEquals(p4.getOrientation(), 'H');
+
+  }
+
+  @Test
+  public void test_string_constructor_error_cases() {
+    assertThrows(IllegalArgumentException.class, () -> new Coordinate("00"));
+    assertThrows(IllegalArgumentException.class, () -> new Coordinate("AA"));
+    assertThrows(IllegalArgumentException.class, () -> new Coordinate("@0"));
+    assertThrows(IllegalArgumentException.class, () -> new Coordinate("[0"));
+    assertThrows(IllegalArgumentException.class, () -> new Coordinate("A/"));
+    assertThrows(IllegalArgumentException.class, () -> new Coordinate("A:"));
+    assertThrows(IllegalArgumentException.class, () -> new Coordinate("A"));
+    assertThrows(IllegalArgumentException.class, () -> new Coordinate("A12"));
   }
 
   @Test

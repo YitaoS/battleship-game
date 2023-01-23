@@ -40,7 +40,7 @@ public class Coordinate {
   public Coordinate(String descr) {
     String upperDescr = descr.toUpperCase();
     if (descr == null || descr.length() != 2) {
-      throw new IllegalArgumentException("Coordinate takes 2 length string as input: a character and a number");
+      throw new IllegalArgumentException("Coordinate takes 2 length string as input: an upper character and a number");
     }
     char rowChar = upperDescr.charAt(0);
     if (rowChar < 'A' || rowChar > 'Z') {
