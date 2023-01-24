@@ -14,8 +14,8 @@ public class BoardTextViewTest {
     String expectedHeader = "  0|1\n";
     assertEquals(expectedHeader, view.makeHeader());
     String expected = expectedHeader +
-        "A | A\n" +
-        "B | B\n" +
+        "A  |  A\n" +
+        "B  |  B\n" +
         expectedHeader;
     assertEquals(expected, view.displayMyOwnBoard());
   }
@@ -23,14 +23,14 @@ public class BoardTextViewTest {
   @Test
   public void test_display_empty_9by3() {
     String expectedHeader = "  0|1|2|3|4|5|6|7|8\n";
-    String expectedBody = "A | | | | | | | | A\nB | | | | | | | | B\nC | | | | | | | | C\n";
+    String expectedBody = "A  | | | | | | | |  A\nB  | | | | | | | |  B\nC  | | | | | | | |  C\n";
     emptyBoardHelper(9, 3, expectedHeader, expectedBody);
   };
 
   @Test
   public void test_display_empty_3by5() {
     String expectedHeader = "  0|1|2\n";
-    String expectedBody = "A | | A\nB | | B\nC | | C\nD | | D\nE | | E\n";
+    String expectedBody = "A  | |  A\nB  | |  B\nC  | |  C\nD  | |  D\nE  | |  E\n";
     emptyBoardHelper(3, 5, expectedHeader, expectedBody);
   };
 
@@ -55,8 +55,8 @@ public class BoardTextViewTest {
     assertTrue(b1.tryAddShip(s2));
     assertTrue(b1.tryAddShip(s3));
     String expected = expectedHeader +
-        "As| A\n" +
-        "Bs|sB\n" +
+        "A s|  A\n" +
+        "B s|s B\n" +
         expectedHeader;
     assertEquals(expected, view.displayMyOwnBoard());
   }

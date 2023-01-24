@@ -8,4 +8,6 @@ public interface Board<T> {
   public boolean tryAddShip(Ship<T> toAdd);
 
   public T whatIsAt(Coordinate where);
+
+  public boolean checkIfWithinBorder(Coordinate where);
 }

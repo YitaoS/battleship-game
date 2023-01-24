@@ -18,7 +18,8 @@ public class Placement {
       o = (char) (o + 'A' - 'a');
     }
     if (o != 'V' && o != 'H') {
-      throw new IllegalArgumentException("Orientation should be vertical or horizonal(v or V)");
+      throw new IllegalArgumentException(
+          "Orientation should be vertical (v or V) or horizonal(h or H),but is :" + o + " !");
     }
     where = w;
     orientation = o;

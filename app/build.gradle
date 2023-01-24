@@ -43,6 +43,10 @@ clover{
     }
 }
 
+run{
+    standardInput = System.in
+}
+
 test {
   testLogging {
      showStandardStreams = true
@@ -50,3 +54,7 @@ test {
   }
 }
 
+application {
+    // Define the main class for the application.
+    mainClassName = 'edu.duke.ys386.battleship.App'
+}

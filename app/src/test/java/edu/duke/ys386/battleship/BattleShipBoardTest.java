@@ -92,7 +92,7 @@ public class BattleShipBoardTest {
 
   }
 
-  private <T> void checkWhatIsAtBoard(BattleShipBoard<T> b, T[][] expected) {
+  private <T> void checkWhatIsAtBoard(Board<T> b, T[][] expected) {
     for (int i = 0; i < expected.length; i++) {
       for (int j = 0; j < expected[0].length; j++) {
         Coordinate where = new Coordinate(i, j);

@@ -41,6 +41,7 @@ public class BoardTextView {
   private void makeBody(StringBuilder ans) {
     for (int row = 0; row < toDisplay.getHeight(); row++) {
       ans.append((char) ('A' + row));
+      ans.append(' ');
       String sep = "";
       for (int column = 0; column < toDisplay.getWidth(); column++) {
         ans.append(sep);
@@ -52,6 +53,7 @@ public class BoardTextView {
         }
         sep = "|";
       }
+      ans.append(' ');
       ans.append((char) ('A' + row));
       ans.append('\n');
     }
