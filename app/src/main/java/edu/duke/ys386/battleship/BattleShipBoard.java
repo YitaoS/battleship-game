@@ -37,11 +37,27 @@ public class BattleShipBoard<T> implements Board<T> {
     this.height = height;
   }
 
+  /**
+   * Try to add ship on board
+   * 
+   * @param toAdd is the ship to be added
+   * @return true if successully add. Otherwise, false
+   * 
+   */
+
   public boolean tryAddShip(Ship<T> toAdd) {
     myShips.add(toAdd);
     return true;
   }
 
+  /**
+   * return what is at the coordinate on board
+   * 
+   * @param where is the coordinate to check
+   * @return null if there is no ship in where. Otherwise, return
+   *         the information of the ship there
+   * 
+   */
   public T whatIsAt(Coordinate where) {
     for (Ship<T> s : myShips) {
       if (s.occupiesCoordinates(where)) {
@@ -51,6 +67,13 @@ public class BattleShipBoard<T> implements Board<T> {
     return null;
   }
 
+  /**
+   * return if a coordinate is within the board
+   * 
+   * @param where the coordinate to check
+   * @return false if it's out of range. Otherwise, true
+   * 
+   */
   public boolean checkIfWithinBorder(Coordinate where) {
     if (where.getRow() < 0 || where.getRow() >= height || where.getColumn() < 0 || where.getColumn() >= width) {
       return false;

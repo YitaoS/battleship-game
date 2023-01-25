@@ -29,7 +29,12 @@ public class BoardTextView {
               toDisplay.getHeight());
     }
   }
-
+ /**
+   * Display the board
+   * 
+   * @param toDisplay is the Board to display
+   * @return a String that represent the board
+   */
   public String displayMyOwnBoard() {
     String header = makeHeader();
     StringBuilder ans = new StringBuilder(header);
@@ -37,7 +42,12 @@ public class BoardTextView {
     ans.append(header);
     return ans.toString(); // this is a placeholder for the moment
   }
-
+ /**
+   * Display the board
+   * 
+   * @param ans a stringbuilder that hold the header of the board
+   * @return a stringbuilder that hold the header and the body of the board
+   */
   private void makeBody(StringBuilder ans) {
     for (int row = 0; row < toDisplay.getHeight(); row++) {
       ans.append((char) ('A' + row));

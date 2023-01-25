@@ -1,18 +1,29 @@
 package edu.duke.ys386.battleship;
-
+/**
+ * This is a class represents an place operation
+ */
 public class Placement {
+/**
+ * where is the position of the board to place 
+ */
   private final Coordinate where;
 
   public Coordinate getWhere() {
     return where;
   }
-
+/**
+ * the orientation to place the ship
+ */
   private final char orientation;
 
   public char getOrientation() {
     return orientation;
   }
-
+/**
+ * create a new placement operation
+ * @param w the position to place
+ * @param o the orientation to place the ship
+ */
   public Placement(Coordinate w, char o) {
     if (o >= 'a' && o <= 'z') {
       o = (char) (o + 'A' - 'a');
@@ -24,7 +35,10 @@ public class Placement {
     where = w;
     orientation = o;
   }
-
+/** 
+ * create a new placement
+ * @param descr a string describe where and how to place the ship
+ */
   public Placement(String descr) {
     if (descr == null || descr.length() != 3) {
       throw new IllegalArgumentException(
