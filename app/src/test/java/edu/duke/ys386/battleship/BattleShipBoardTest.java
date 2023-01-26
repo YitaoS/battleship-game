@@ -23,9 +23,11 @@ public class BattleShipBoardTest {
   @Test
   public void test_try_add_ship() {
     Board<Character> b1 = new BattleShipBoard<Character>(10, 20);
-    Ship<Character> s1 = new BasicShip(new Coordinate(1, 2));
-    Ship<Character> s2 = new BasicShip(new Coordinate(3, 4));
-    Ship<Character> s3 = new BasicShip(new Coordinate(0, 0));
+
+    RectangleShip<Character> s1 = new RectangleShip<Character>(new Coordinate(1, 2), 's', '*');
+    RectangleShip<Character> s2 = new RectangleShip<Character>(new Coordinate(3, 4), 's', '*');
+    RectangleShip<Character> s3 = new RectangleShip<Character>(new Coordinate(0, 0), 's', '*');
+
     assertTrue(b1.tryAddShip(s1));
     assertTrue(b1.tryAddShip(s2));
     assertTrue(b1.tryAddShip(s3));
@@ -34,9 +36,10 @@ public class BattleShipBoardTest {
   @Test
   void test_what_ls_at() {
     BattleShipBoard<Character> b1 = new BattleShipBoard<Character>(10, 20);
-    Ship<Character> s1 = new BasicShip(new Coordinate(1, 2));
-    Ship<Character> s2 = new BasicShip(new Coordinate(3, 4));
-    Ship<Character> s3 = new BasicShip(new Coordinate(0, 0));
+    RectangleShip<Character> s1 = new RectangleShip<Character>(new Coordinate(1, 2), 's', '*');
+    RectangleShip<Character> s2 = new RectangleShip<Character>(new Coordinate(3, 4), 's', '*');
+    RectangleShip<Character> s3 = new RectangleShip<Character>(new Coordinate(0, 0), 's', '*');
+
     Character[][] e1 = new Character[][] { { null, null, null, null, null, null, null, null, null, null },
         { null, null, null, null, null, null, null, null, null, null },
         { null, null, null, null, null, null, null, null, null, null },

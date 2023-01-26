@@ -48,7 +48,8 @@ class AppTest {
     App app = new App(b, sr, ps);
     app.doOnePlacement();
     Board<Character> tb = new BattleShipBoard<>(10, 20);
-    tb.tryAddShip(new BasicShip(new Coordinate("B2")));
+    RectangleShip<Character> rts = new RectangleShip<Character>(new Coordinate("B2"), 's', '*');
+    tb.tryAddShip(rts);
     BoardTextView btv = new BoardTextView(tb);
     String s = "Where would you like to put your ship?\n" + btv.displayMyOwnBoard() + "\n";
     assertEquals(bytes.toString(), s);

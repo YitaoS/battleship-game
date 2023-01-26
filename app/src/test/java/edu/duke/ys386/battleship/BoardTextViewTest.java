@@ -48,9 +48,10 @@ public class BoardTextViewTest {
     Board<Character> b1 = new BattleShipBoard<Character>(2, 2);
     BoardTextView view = new BoardTextView(b1);
     String expectedHeader = "  0|1\n";
-    Ship<Character> s1 = new BasicShip(new Coordinate(1, 1));
-    Ship<Character> s2 = new BasicShip(new Coordinate(1, 0));
-    Ship<Character> s3 = new BasicShip(new Coordinate(0, 0));
+    RectangleShip<Character> s1 = new RectangleShip<Character>(new Coordinate(1, 1), 's', '*');
+    RectangleShip<Character> s2 = new RectangleShip<Character>(new Coordinate(1, 0), 's', '*');
+    RectangleShip<Character> s3 = new RectangleShip<Character>(new Coordinate(0, 0), 's', '*');
+
     assertTrue(b1.tryAddShip(s1));
     assertTrue(b1.tryAddShip(s2));
     assertTrue(b1.tryAddShip(s3));

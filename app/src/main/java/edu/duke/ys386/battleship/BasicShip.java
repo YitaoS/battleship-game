@@ -1,16 +1,23 @@
 package edu.duke.ys386.battleship;
 
-public class BasicShip implements Ship<Character> {
-  private final Coordinate myLocation;
+import java.util.HashMap;
 
-  public BasicShip(Coordinate c) {
-    myLocation = c;
+public abstract class BasicShip<T> implements Ship<T> {
+  protected HashMap<Coordinate, Boolean> myPieces;
+  protected ShipDisplayInfo<T> myDisplayInfo;
+
+  public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> myDisplayInfo) {
+    myPieces = new HashMap<>();
+    for (Coordinate c : where) {
+      myPieces.put(c, false);
+    }
+    this.myDisplayInfo = myDisplayInfo;
   }
 
   @Override
   public boolean occupiesCoordinates(Coordinate where) {
     // TODO Auto-generated method stub
-    return where.equals(myLocation);
+    return myPieces.get(where) != null;
   }
 
   @Override
@@ -32,9 +39,9 @@ public class BasicShip implements Ship<Character> {
   }
 
   @Override
-  public Character getDisplayInfoAt(Coordinate where) {
+  public T getDisplayInfoAt(Coordinate where) {
     // TODO Auto-generated method stub
-    return 's';
+    return myDisplayInfo.getInfo(where, false);
   }
 
 }
