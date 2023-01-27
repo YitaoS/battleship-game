@@ -13,16 +13,23 @@ public class RectangleShip<T> extends BasicShip<T> {
     return ans;
   }
 
-  public RectangleShip(Coordinate upperLeft, int width, int height, ShipDisplayInfo<T> sdi) {
+  final String name;
+
+  public RectangleShip(String name, Coordinate upperLeft, int width, int height, ShipDisplayInfo<T> sdi) {
     super(makeCoords(upperLeft, width, height), sdi);
+    this.name = name;
   }
 
-  public RectangleShip(Coordinate upperLeft, int width, int height, T data, T onHit) {
-    this(upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit));
+  public RectangleShip(String name, Coordinate upperLeft, int width, int height, T data, T onHit) {
+    this(name, upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit));
   }
 
   public RectangleShip(Coordinate upperLeft, T data, T onHit) {
-    this(upperLeft, 1, 1, data, onHit);
+    this("testShip", upperLeft, 1, 1, data, onHit);
   }
 
+  @Override
+  public String getName() {
+    return name;
+  }
 }

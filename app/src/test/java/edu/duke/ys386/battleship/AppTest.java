@@ -47,8 +47,9 @@ class AppTest {
     Board<Character> b = new BattleShipBoard<Character>(10, 20);
     App app = new App(b, sr, ps);
     app.doOnePlacement();
+    AbstractShipFactory<Character> asf = new V1ShipFactory();
     Board<Character> tb = new BattleShipBoard<>(10, 20);
-    RectangleShip<Character> rts = new RectangleShip<Character>(new Coordinate("B2"), 's', '*');
+    Ship<Character> rts = asf.makeDestroyer(new Placement("B2V"));
     tb.tryAddShip(rts);
     BoardTextView btv = new BoardTextView(tb);
     String s = "Where would you like to put your ship?\n" + btv.displayMyOwnBoard() + "\n";

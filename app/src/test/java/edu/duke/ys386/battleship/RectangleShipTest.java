@@ -21,7 +21,7 @@ public class RectangleShipTest {
 
   @Test
   public void test_constructor() {
-    RectangleShip<Character> rts = new RectangleShip<Character>(new Coordinate(2, 1), 5, 3, 's', '*');
+    RectangleShip<Character> rts = new RectangleShip<Character>("RtShip", new Coordinate(2, 1), 5, 3, 's', '*');
 
     for (int i = 2; i < 5; i++) {
       for (int j = 1; j < 6; j++) {
