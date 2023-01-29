@@ -29,6 +29,7 @@ public class BattleShipBoardTest {
     RectangleShip<Character> s3 = new RectangleShip<Character>(new Coordinate(0, 0), 's', '*');
 
     assertTrue(b1.tryAddShip(s1));
+    assertFalse(b1.tryAddShip(s1));
     assertTrue(b1.tryAddShip(s2));
     assertTrue(b1.tryAddShip(s3));
   }

@@ -33,7 +33,7 @@ public class BattleShipBoard<T> implements Board<T> {
   }
 
   public BattleShipBoard(int w, int h) {
-    this(w, h, new InBoundsRuleChecker<T>(null));
+    this(w, h, new InBoundsRuleChecker<T>(new NoCollisionRuleChecker<>(null)));
   }
 
   public BattleShipBoard(int width, int height, PlacementRuleChecker<T> prc) {
@@ -57,6 +57,9 @@ public class BattleShipBoard<T> implements Board<T> {
    */
 
   public boolean tryAddShip(Ship<T> toAdd) {
+    if (!placementChecker.checkPlacement(toAdd, this)) {
+      return false;
+    }
     myShips.add(toAdd);
     return true;
   }
