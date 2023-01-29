@@ -49,4 +49,12 @@ public class BasicShipTest {
     assertEquals(rs.getName(), "RtShip");
   }
 
+  @Test
+  public void test_get_coordinate(){
+    RectangleShip<Character> rs = new RectangleShip<Character>("RtShip", new Coordinate(0, 2), 2, 1, 's', '*');
+    assertEquals(rs.getName(), "RtShip");
+    for(Coordinate s:rs.getCoordinates()){
+      assertDoesNotThrow(() -> rs.checkCoordinateInThisShip(s));
+    }
+  }
 }
