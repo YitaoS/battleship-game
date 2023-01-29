@@ -36,7 +36,7 @@ public class BattleShipBoard<T> implements Board<T> {
     this(w, h, new InBoundsRuleChecker<T>(null));
   }
 
-  public BattleShipBoard(int width, int height, InBoundsRuleChecker<T> ibrc) {
+  public BattleShipBoard(int width, int height, PlacementRuleChecker<T> prc) {
     if (width <= 0) {
       throw new IllegalArgumentException("BattleShipBoard's width must be positive but is " + width);
     }
@@ -45,7 +45,7 @@ public class BattleShipBoard<T> implements Board<T> {
     }
     this.width = width;
     this.height = height;
-    this.placementChecker = ibrc;
+    this.placementChecker = prc;
   }
 
   /**
