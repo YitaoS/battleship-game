@@ -34,13 +34,14 @@ public class TextPlayerTest {
   void test_do_one_placement() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     TextPlayer player = createTextPlayer(10, 20, "B2V\nC8H\na4v\n", bytes);
-    player.doOnePlacement();
+    V1ShipFactory shipFactory = new V1ShipFactory();
+    player.doOnePlacement("Destroyer", (p) -> shipFactory.makeDestroyer(p));
     AbstractShipFactory<Character> asf = new V1ShipFactory();
     Board<Character> tb = new BattleShipBoard<>(10, 20);
     Ship<Character> rts = asf.makeDestroyer(new Placement("B2V"));
     tb.tryAddShip(rts);
     BoardTextView btv = new BoardTextView(tb);
-    String s = "Player A where would you like to put your Destroyer?\n" + btv.displayMyOwnBoard() + "\n";
+    String s = "Player A where do you want to place a Destroyer?\n" + btv.displayMyOwnBoard();
     assertEquals(bytes.toString(), s);
   }
 
@@ -55,12 +56,15 @@ public class TextPlayerTest {
   @Test
   void test_do_placement_phase() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(10, 20, "B2V\nC8H\na4v\n", bytes);
+    TextPlayer player = createTextPlayer(10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n", bytes);
     player.doPlacementPhase();
     AbstractShipFactory<Character> asf = new V1ShipFactory();
     Board<Character> tb = new BattleShipBoard<>(10, 20);
-    Ship<Character> rts = asf.makeDestroyer(new Placement("B2V"));
-    tb.tryAddShip(rts);
+    Ship<Character> rts1 = asf.makeSubmarine(new Placement("B2V"));
+    Ship<Character> rts2 = asf.makeSubmarine(new Placement("C8h"));
+    Ship<Character> rts3 = asf.makeDestroyer(new Placement("A4V"));
+    Ship<Character> rts4 = asf.makeDestroyer(new Placement("D0V"));
+    Ship<Character> rts5 = asf.makeDestroyer(new Placement("H1V"));
     BoardTextView btv = new BoardTextView(tb);
     String prompt = "--------------------------------------------------------------------------------\n" +
         "Player A: you are going to place the following ships (which are all\n" +
@@ -74,7 +78,19 @@ public class TextPlayerTest {
         "2 \"Carriers\" that are 1x6\n" +
         "--------------------------------------------------------------------------------\n\n";
 
-    String s = prompt + "Player A where would you like to put your Destroyer?\n" + btv.displayMyOwnBoard() + "\n";
+    tb.tryAddShip(rts1);
+    String hint1 = "Player A where do you want to place a Destroyer?\n";
+    String hint2 = "Player A where do you want to place a Submarine?\n";
+    String s = prompt + hint2 + btv.displayMyOwnBoard();
+    tb.tryAddShip(rts2);
+    s += hint2 + btv.displayMyOwnBoard();
+    tb.tryAddShip(rts3);
+    s += hint1 + btv.displayMyOwnBoard();
+    tb.tryAddShip(rts4);
+    s += hint1 + btv.displayMyOwnBoard();
+    tb.tryAddShip(rts5);
+    s += hint1 + btv.displayMyOwnBoard();
+
     assertEquals(bytes.toString(), s);
 
   }
