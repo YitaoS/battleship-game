@@ -21,7 +21,7 @@ public interface Board<T> {
    * @param toAdd the ship to add
    * @return true if success. Otherwise, false
    */
-  public boolean tryAddShip(Ship<T> toAdd);
+  public String tryAddShip(Ship<T> toAdd);
 
   /**
    * look at what is in a position of the board
@@ -35,7 +35,7 @@ public interface Board<T> {
    * check if a position is out of the board
    * 
    * @param where the coordinate of a position
-   * @return true if with in border. Otherwise, false.
+   * @return Null if with in border. Otherwise, out of border.
    */
-  public boolean checkIfWithinBorder(Coordinate where);
+  public String checkIfWithinBorder(Coordinate where);
 }

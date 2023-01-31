@@ -27,11 +27,15 @@ public class BattleShipBoardTest {
     RectangleShip<Character> s1 = new RectangleShip<Character>(new Coordinate(1, 2), 's', '*');
     RectangleShip<Character> s2 = new RectangleShip<Character>(new Coordinate(3, 4), 's', '*');
     RectangleShip<Character> s3 = new RectangleShip<Character>(new Coordinate(0, 0), 's', '*');
+    RectangleShip<Character> s4 = new RectangleShip<Character>(new Coordinate(-5, 0), 's', '*');
+    RectangleShip<Character> s5 = new RectangleShip<Character>(new Coordinate(0, -5), 's', '*');
 
-    assertTrue(b1.tryAddShip(s1));
-    assertFalse(b1.tryAddShip(s1));
-    assertTrue(b1.tryAddShip(s2));
-    assertTrue(b1.tryAddShip(s3));
+    assertEquals("", b1.tryAddShip(s1));
+    assertNotEquals("", b1.tryAddShip(s1));
+    assertEquals("", b1.tryAddShip(s2));
+    assertEquals("", b1.tryAddShip(s3));
+    assertNotEquals("", b1.tryAddShip(s4));
+    assertNotEquals("", b1.tryAddShip(s5));
   }
 
   @Test
@@ -63,9 +67,9 @@ public class BattleShipBoardTest {
         { null, null, null, null, null, null, null, null, null, null },
     };
     checkWhatIsAtBoard(b1, e1);
-    assertTrue(b1.tryAddShip(s1));
-    assertTrue(b1.tryAddShip(s2));
-    assertTrue(b1.tryAddShip(s3));
+    assertEquals("", b1.tryAddShip(s1));
+    assertEquals("", b1.tryAddShip(s2));
+    assertEquals("", b1.tryAddShip(s3));
     Character[][] e2 = new Character[][] { { 's', null, null, null, null, null, null, null, null, null },
         { null, null, 's', null, null, null, null, null, null, null },
         { null, null, null, null, null, null, null, null, null, null },
@@ -88,7 +92,7 @@ public class BattleShipBoardTest {
         { null, null, null, null, null, null, null, null, null, null },
     };
     checkWhatIsAtBoard(b1, e2);
-    assertFalse(b1.checkIfWithinBorder(new Coordinate("Z9")));
+    assertNotEquals("", b1.checkIfWithinBorder(new Coordinate("Z9")));
     assertEquals(b1.whatIsAt(new Coordinate(1, 2)), 's');
     assertEquals(b1.whatIsAt(new Coordinate(3, 4)), 's');
     assertEquals(b1.whatIsAt(new Coordinate(0, 0)), 's');
@@ -100,7 +104,7 @@ public class BattleShipBoardTest {
     for (int i = 0; i < expected.length; i++) {
       for (int j = 0; j < expected[0].length; j++) {
         Coordinate where = new Coordinate(i, j);
-        assertTrue(b.checkIfWithinBorder(where));
+        assertEquals("", b.checkIfWithinBorder(where));
         assertEquals(b.whatIsAt(where), expected[i][j]);
       }
     }

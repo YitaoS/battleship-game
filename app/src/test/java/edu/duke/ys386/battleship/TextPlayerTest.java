@@ -1,6 +1,7 @@
 package edu.duke.ys386.battleship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -60,7 +61,7 @@ public class TextPlayerTest {
     player.doPlacementPhase();
     AbstractShipFactory<Character> asf = new V1ShipFactory();
     Board<Character> tb = new BattleShipBoard<>(10, 20);
-    Ship<Character> rts1 = asf.makeSubmarine(new Placement("B2V"));
+    Ship<Character> rts1 = asf.makeSubmarine(new Placement("b2V"));
     Ship<Character> rts2 = asf.makeSubmarine(new Placement("C8h"));
     Ship<Character> rts3 = asf.makeDestroyer(new Placement("A4V"));
     Ship<Character> rts4 = asf.makeDestroyer(new Placement("D0V"));
@@ -93,5 +94,13 @@ public class TextPlayerTest {
 
     assertEquals(bytes.toString(), s);
 
+  }
+
+  @Test
+  void test_unvalid_input_for_do_placement_phase() throws IOException {
+    TextPlayer player = createTextPlayer(10, 20, "", new ByteArrayOutputStream());
+    assertThrows(IOException.class, () -> player.doPlacementPhase());
+    TextPlayer player1 = createTextPlayer(10, 20, "A0Q", new ByteArrayOutputStream());
+    assertThrows(IllegalArgumentException.class, () -> player1.doPlacementPhase());
   }
 }

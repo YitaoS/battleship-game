@@ -24,7 +24,7 @@ public class App {
     TextPlayer p1 = new TextPlayer("A", b1, input, System.out, factory);
     TextPlayer p2 = new TextPlayer("B", b2, input, System.out, factory);
     App app = new App(p1, p2);
-    p1.doPlacementPhase();
-    p2.doPlacementPhase();
+    app.player1.doPlacementPhase();
+    app.player2.doPlacementPhase();
   }
 }

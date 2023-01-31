@@ -55,13 +55,13 @@ public class BattleShipBoard<T> implements Board<T> {
    * @return true if successully add. Otherwise, false
    * 
    */
-
-  public boolean tryAddShip(Ship<T> toAdd) {
-    if (!placementChecker.checkPlacement(toAdd, this)) {
-      return false;
+  public String tryAddShip(Ship<T> toAdd) {
+    String s = placementChecker.checkPlacement(toAdd, this);
+    if (s != "") {
+      return s;
     }
     myShips.add(toAdd);
-    return true;
+    return "";
   }
 
   /**
@@ -88,11 +88,18 @@ public class BattleShipBoard<T> implements Board<T> {
    * @return false if it's out of range. Otherwise, true
    * 
    */
-  public boolean checkIfWithinBorder(Coordinate where) {
-    if (where.getRow() < 0 || where.getRow() >= height || where.getColumn() < 0 || where.getColumn() >= width) {
-      return false;
+  public String checkIfWithinBorder(Coordinate where) {
+    String s = "";
+    if (where.getRow() < 0) {
+      s = "That placement is invalid: the ship goes off the top of the board.\n";
+    } else if (where.getRow() >= height) {
+      s = "That placement is invalid: the ship goes off the bottom of the board\n.";
+    } else if (where.getColumn() < 0) {
+      s = "That placement is invalid: the ship goes off the left of the board.\n";
+    } else if (where.getColumn() >= width) {
+      s = "That placement is invalid: the ship goes off the right of the board.\n";
     }
-    return true;
+    return s;
   }
 
 }

@@ -7,13 +7,14 @@ public class InBoundsRuleChecker<T> extends PlacementRuleChecker<T> {
   }
 
   @Override
-  protected boolean checkMyRule(Ship<T> theShip, Board<T> theBoard) {
+  protected String checkMyRule(Ship<T> theShip, Board<T> theBoard) {
     for (Coordinate c : theShip.getCoordinates()) {
-      if (!theBoard.checkIfWithinBorder(c) ){
-        return false;
+      String check = theBoard.checkIfWithinBorder(c);
+      if (check != ""){
+        return check;
       }
     }
-    return true;
+    return "";
   }
 
 }

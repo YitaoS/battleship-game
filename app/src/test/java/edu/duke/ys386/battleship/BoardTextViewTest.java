@@ -52,9 +52,9 @@ public class BoardTextViewTest {
     RectangleShip<Character> s2 = new RectangleShip<Character>(new Coordinate(1, 0), 's', '*');
     RectangleShip<Character> s3 = new RectangleShip<Character>(new Coordinate(0, 0), 's', '*');
 
-    assertTrue(b1.tryAddShip(s1));
-    assertTrue(b1.tryAddShip(s2));
-    assertTrue(b1.tryAddShip(s3));
+    assertEquals("",b1.tryAddShip(s1));
+    assertEquals("",b1.tryAddShip(s2));
+    assertEquals("",b1.tryAddShip(s3));
     String expected = expectedHeader +
         "A s|  A\n" +
         "B s|s B\n" +

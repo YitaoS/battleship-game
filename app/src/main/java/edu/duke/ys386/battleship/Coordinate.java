@@ -1,31 +1,38 @@
 package edu.duke.ys386.battleship;
 
 /**
- * This is a class that represent a coordinate, indicating 
- * the position in the board. 
+ * This is a class that represent a coordinate, indicating
+ * the position in the board.
  */
 public class Coordinate {
   private final int row;
-/**
- * row of the coordinate
- * @return row
- */
+
+  /**
+   * row of the coordinate
+   * 
+   * @return row
+   */
   public int getRow() {
     return row;
   }
+
   private final int column;
-/**
- * column of the coordinate
- * @return column
- */
+
+  /**
+   * column of the coordinate
+   * 
+   * @return column
+   */
   public int getColumn() {
     return column;
   }
-/**
- * construct a new coordinate
- * @param r set row
- * @param c set column
- */
+
+  /**
+   * construct a new coordinate
+   * 
+   * @param r set row
+   * @param c set column
+   */
   public Coordinate(int r, int c) {
     row = r;
     column = c;
@@ -49,23 +56,28 @@ public class Coordinate {
   public int hashCode() {
     return toString().hashCode();
   }
-/**
- * costruct a new coordinate
- * @param descr text that first char shows row 'A' to 'Z'(Case matters) and second one shows col
- */
+
+  /**
+   * costruct a new coordinate
+   * 
+   * @param descr text that first char shows row 'A' to 'Z'(Case matters) and
+   *              second one shows col
+   */
   public Coordinate(String descr) {
     String upperDescr = descr.toUpperCase();
     if (descr == null || descr.length() != 2) {
-      throw new IllegalArgumentException("Coordinate takes 2 length string as input: an upper character and a number");
+      throw new IllegalArgumentException(
+          "Coordinate takes 2 length string as input: an upper character and a number, but your input is :" + descr);
     }
     char rowChar = upperDescr.charAt(0);
     if (rowChar < 'A' || rowChar > 'Z') {
-      throw new IllegalArgumentException("Coordinate row should between A and Z, please enter a valid letter");
+      throw new IllegalArgumentException(
+          "Coordinate row should between A and Z (a and z), please enter a valid letter , but your row is: " + rowChar);
     }
     this.row = rowChar - 'A';
     char colChar = upperDescr.charAt(1);
     if (colChar < '0' || colChar > '9') {
-      throw new IllegalArgumentException("Coordinate column should between 0 and 9, please enter a valid letter");
+      throw new IllegalArgumentException("Coordinate column should between 0 and 9,but your col is :" + colChar);
     }
     this.column = colChar - '0';
 
