@@ -46,6 +46,30 @@ public class BoardTextView {
     return ans.toString(); // this is a placeholder for the moment
   }
 
+  public String displayMyBoardWithEnemyNextToIt(BoardTextView enemyView, String myHeader, String enemyHeader) {
+    int width = toDisplay.getWidth();
+    StringBuffer sb = new StringBuffer();
+    //header
+    for(int i=0;i<5;i++)sb.append(' ');
+    sb.append(myHeader);
+    for(int i = sb.length();i < 2*width+22;i++)sb.append(' ');
+    sb.append(enemyHeader+'\n');
+    //body
+    String [] lines1 = displayMyOwnBoard().split("\n");
+    String [] lines2 = enemyView.displayEnemyBoard().split("\n");
+    for(int index = 0; index < lines1.length;index++){
+      StringBuilder tsb = new StringBuilder();
+      tsb.append(lines1[index]);
+      for(int i = lines1[index].length();i< 2*width+19;i++){
+        tsb.append(' ');
+      }
+      tsb.append(lines2[index]+'\n');
+      sb.append(tsb.toString());
+    }
+    //tail
+    return sb.toString();
+  }
+
   public String displayMyOwnBoard(){
     return displayAnyBoard((p)->toDisplay.whatIsAtForSelf(p));
   }
