@@ -43,4 +43,5 @@ public interface Board<T> {
 
   public Ship<T> fireAt(Coordinate c);
 
+  public boolean shipAllSunk();
 }

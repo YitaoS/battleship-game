@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.function.Function;
 
 public class TextPlayer {
-  String name;
+  final String name;
   final Board<Character> theBoard;
   final BoardTextView view;
   final BufferedReader inputReader;
@@ -18,7 +18,9 @@ public class TextPlayer {
   final ArrayList<String> shipsToPlace;
   final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
 
-
+  String getName(){
+    return name;
+  }
 
   public TextPlayer(String n, Board<Character> b,
       BufferedReader i,
@@ -87,5 +89,9 @@ public class TextPlayer {
     for(String sship:shipsToPlace){
         doOnePlacement(sship,shipCreationFns.get(sship));
     }
+  }
+
+  public boolean loseTheGame(){
+    return theBoard.shipAllSunk();
   }
 }

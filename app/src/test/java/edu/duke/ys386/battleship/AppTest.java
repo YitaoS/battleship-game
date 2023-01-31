@@ -6,10 +6,13 @@ package edu.duke.ys386.battleship;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.StringReader;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -19,6 +22,23 @@ import org.junit.jupiter.api.parallel.Resources;
 
 class AppTest {
   // @Disabled
+  @Test 
+  public void test_check_who_win()throws IOException{
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    TextPlayer player1 = createTextPlayer("A",10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n", bytes);
+    player1.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
+    TextPlayer player2 = createTextPlayer("B",10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n", bytes);
+    player2.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
+    App app = new App(player1, player2);
+    assertEquals(app.checkWhoWin(app), null);
+    player1.theBoard.fireAt(new Coordinate("b2"));
+    player1.theBoard.fireAt(new Coordinate("c2"));
+    assertEquals(app.checkWhoWin(app), "B");
+    player2.theBoard.fireAt(new Coordinate("b2"));
+    player2.theBoard.fireAt(new Coordinate("c2"));
+    player1.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
+    assertEquals(app.checkWhoWin(app), "A");
+  }
   @Test
   @ResourceLock(value = Resources.SYSTEM_OUT, mode = ResourceAccessMode.READ_WRITE)
   void test_main() throws IOException {
@@ -45,5 +65,12 @@ class AppTest {
     String expected = new String(expectedStream.readAllBytes());
     String actual = bytes.toString();
     assertEquals(expected, actual);
+  }
+  private TextPlayer createTextPlayer(String name,int w, int h, String inputData, OutputStream bytes) {
+    BufferedReader input = new BufferedReader(new StringReader(inputData));
+    PrintStream output = new PrintStream(bytes, true);
+    Board<Character> board = new BattleShipBoard<Character>(w, h, 'X');
+    V1ShipFactory shipFactory = new V1ShipFactory();
+    return new TextPlayer(name, board, input, output, shipFactory);
   }
 }

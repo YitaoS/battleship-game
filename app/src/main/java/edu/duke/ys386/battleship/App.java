@@ -16,6 +16,16 @@ public class App {
     this.player2 = player2;
   }
 
+  public String checkWhoWin(App app){
+    if(app.player1.loseTheGame()){
+      return player2.getName();
+    }
+    if(app.player2.loseTheGame()){
+      return player1.getName();
+    }
+    return null;
+  }
+
   public static void main(String[] args) throws IOException {
     Board<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
     Board<Character> b2 = new BattleShipBoard<Character>(10, 20, 'X');
