@@ -1,6 +1,7 @@
 package edu.duke.ys386.battleship;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Constructs a BattleShipBoard with the sp ecified width
@@ -32,11 +33,18 @@ public class BattleShipBoard<T> implements Board<T> {
     return placementChecker;
   }
 
-  public BattleShipBoard(int w, int h) {
-    this(w, h, new InBoundsRuleChecker<T>(new NoCollisionRuleChecker<>(null)));
+  private final HashSet<Coordinate> enemyMisses;
+
+  final T missInfo;
+  // public HashSet<Coordinate> getEnemyMisses(){
+  // return enemyMisses;
+  // }
+
+  public BattleShipBoard(int w, int h, T missInfo) {
+    this(w, h, new InBoundsRuleChecker<T>(new NoCollisionRuleChecker<>(null)), missInfo);
   }
 
-  public BattleShipBoard(int width, int height, PlacementRuleChecker<T> prc) {
+  public BattleShipBoard(int width, int height, PlacementRuleChecker<T> prc, T missInfo) {
     if (width <= 0) {
       throw new IllegalArgumentException("BattleShipBoard's width must be positive but is " + width);
     }
@@ -46,6 +54,8 @@ public class BattleShipBoard<T> implements Board<T> {
     this.width = width;
     this.height = height;
     this.placementChecker = prc;
+    this.enemyMisses = new HashSet<>();
+    this.missInfo = missInfo;
   }
 
   /**
@@ -72,11 +82,18 @@ public class BattleShipBoard<T> implements Board<T> {
    *         the information of the ship there
    * 
    */
-  public T whatIsAt(Coordinate where) {
+  public T whatIsAtForSelf(Coordinate where) {
+    return whatIsAt(where, true);
+  }
+
+  protected T whatIsAt(Coordinate where, boolean isSelf) {
     for (Ship<T> s : myShips) {
       if (s.occupiesCoordinates(where)) {
-        return s.getDisplayInfoAt(where);
+        return s.getDisplayInfoAt(where, isSelf);
       }
+    }
+    if (!isSelf && enemyMisses.contains(where)) {
+      return missInfo;
     }
     return null;
   }
@@ -102,4 +119,18 @@ public class BattleShipBoard<T> implements Board<T> {
     return s;
   }
 
+  public Ship<T> fireAt(Coordinate c) {
+    for (Ship<T> ship : myShips) {
+      if (ship.occupiesCoordinates(c)) {
+        ship.recordHitAt(c);
+        return ship;
+      }
+    }
+    enemyMisses.add(c);
+    return null;
+  }
+
+  public T whatIsAtForEnemy(Coordinate where) {
+    return whatIsAt(where, false);
+  }
 }

@@ -38,7 +38,7 @@ public class TextPlayerTest {
     V1ShipFactory shipFactory = new V1ShipFactory();
     player.doOnePlacement("Destroyer", (p) -> shipFactory.makeDestroyer(p));
     AbstractShipFactory<Character> asf = new V1ShipFactory();
-    Board<Character> tb = new BattleShipBoard<>(10, 20);
+    Board<Character> tb = new BattleShipBoard<>(10, 20, 'X');
     Ship<Character> rts = asf.makeDestroyer(new Placement("B2V"));
     tb.tryAddShip(rts);
     BoardTextView btv = new BoardTextView(tb);
@@ -49,7 +49,7 @@ public class TextPlayerTest {
   private TextPlayer createTextPlayer(int w, int h, String inputData, OutputStream bytes) {
     BufferedReader input = new BufferedReader(new StringReader(inputData));
     PrintStream output = new PrintStream(bytes, true);
-    Board<Character> board = new BattleShipBoard<Character>(w, h);
+    Board<Character> board = new BattleShipBoard<Character>(w, h, 'X');
     V1ShipFactory shipFactory = new V1ShipFactory();
     return new TextPlayer("A", board, input, output, shipFactory);
   }
@@ -60,7 +60,7 @@ public class TextPlayerTest {
     TextPlayer player = createTextPlayer(10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n", bytes);
     player.doPlacementPhase();
     AbstractShipFactory<Character> asf = new V1ShipFactory();
-    Board<Character> tb = new BattleShipBoard<>(10, 20);
+    Board<Character> tb = new BattleShipBoard<>(10, 20, 'X');
     Ship<Character> rts1 = asf.makeSubmarine(new Placement("b2V"));
     Ship<Character> rts2 = asf.makeSubmarine(new Placement("C8h"));
     Ship<Character> rts3 = asf.makeDestroyer(new Placement("A4V"));

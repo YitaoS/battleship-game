@@ -9,7 +9,7 @@ public class InBoundsRuleCheckerTest {
   public void test_check_my_rules() {
     RectangleShip<Character> rs1 = new RectangleShip<Character>("RtShip", new Coordinate(0, 2), 2, 1, 's', '*');
     RectangleShip<Character> rs2 = new RectangleShip<Character>("RtShip", new Coordinate(2, 9), 2, 2, 's', '*');
-    BattleShipBoard<Character> bsb = new BattleShipBoard<>(10, 20);
+    BattleShipBoard<Character> bsb = new BattleShipBoard<>(10, 20, 'X');
     assertEquals("", bsb.getPlacementRuleChecker().checkPlacement(rs1, bsb));
     assertNotEquals("", bsb.getPlacementRuleChecker().checkPlacement(rs2, bsb));
   }

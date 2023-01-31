@@ -1,5 +1,7 @@
 package edu.duke.ys386.battleship;
 
+import java.util.function.Function;
+
 /**
  * This class handles textual display of
  * a Board (i.e., converting it to a string to show
@@ -29,33 +31,43 @@ public class BoardTextView {
               toDisplay.getHeight());
     }
   }
- /**
+
+  /**
    * Display the board
    * 
    * @param toDisplay is the Board to display
    * @return a String that represent the board
    */
-  public String displayMyOwnBoard() {
+  protected String displayAnyBoard(Function<Coordinate, Character> getSquareFn){
     String header = makeHeader();
     StringBuilder ans = new StringBuilder(header);
-    makeBody(ans);
+    makeBody(ans,getSquareFn);
     ans.append(header);
     return ans.toString(); // this is a placeholder for the moment
   }
- /**
+
+  public String displayMyOwnBoard(){
+    return displayAnyBoard((p)->toDisplay.whatIsAtForSelf(p));
+  }
+
+  public String displayEnemyBoard(){
+    return displayAnyBoard((p)->toDisplay.whatIsAtForEnemy(p));
+  }
+
+  /**
    * Display the board
    * 
    * @param ans a stringbuilder that hold the header of the board
    * @return a stringbuilder that hold the header and the body of the board
    */
-  private void makeBody(StringBuilder ans) {
+  private void makeBody(StringBuilder ans,Function<Coordinate, Character> getSquareFn) {
     for (int row = 0; row < toDisplay.getHeight(); row++) {
       ans.append((char) ('A' + row));
       ans.append(' ');
       String sep = "";
       for (int column = 0; column < toDisplay.getWidth(); column++) {
         ans.append(sep);
-        Character curChar = toDisplay.whatIsAt(new Coordinate(row, column));
+        Character curChar =  getSquareFn.apply(new Coordinate(row, column));
         if (curChar != null) {
           ans.append(curChar);
         } else {

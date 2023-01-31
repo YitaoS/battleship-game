@@ -5,13 +5,15 @@ import java.util.HashMap;
 public abstract class BasicShip<T> implements Ship<T> {
   protected HashMap<Coordinate, Boolean> myPieces;
   protected ShipDisplayInfo<T> myDisplayInfo;
+  protected ShipDisplayInfo<T> enemyDisplayInfo;
 
-  public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> myDisplayInfo) {
+  public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> myDisplayInfo, ShipDisplayInfo<T> eneDisplayInfo) {
     myPieces = new HashMap<>();
     for (Coordinate c : where) {
       myPieces.put(c, false);
     }
     this.myDisplayInfo = myDisplayInfo;
+    this.enemyDisplayInfo = eneDisplayInfo;
   }
 
   protected void checkCoordinateInThisShip(Coordinate c) {
@@ -23,13 +25,11 @@ public abstract class BasicShip<T> implements Ship<T> {
 
   @Override
   public boolean occupiesCoordinates(Coordinate where) {
-    // TODO Auto-generated method stub
     return myPieces.get(where) != null;
   }
 
   @Override
   public boolean isSunk() {
-    // TODO Auto-generated method stub
     for (Coordinate c : myPieces.keySet()) {
       if (!wasHitAt(c)) {
         return false;
@@ -40,26 +40,26 @@ public abstract class BasicShip<T> implements Ship<T> {
 
   @Override
   public void recordHitAt(Coordinate where) {
-    // TODO Auto-generated method stub
     checkCoordinateInThisShip(where);
     myPieces.put(where, true);
   }
 
   @Override
   public boolean wasHitAt(Coordinate where) {
-    // TODO Auto-generated method stub
     checkCoordinateInThisShip(where);
     return myPieces.get(where);
   }
 
   @Override
-  public T getDisplayInfoAt(Coordinate where) {
-    // TODO Auto-generated method stub
-    return myDisplayInfo.getInfo(where, wasHitAt(where));
+  public T getDisplayInfoAt(Coordinate where, boolean myShip) {
+    if (myShip) {
+      return myDisplayInfo.getInfo(where, wasHitAt(where));
+    }
+    return enemyDisplayInfo.getInfo(where, wasHitAt(where));
   }
 
   @Override
-  public Iterable<Coordinate> getCoordinates(){
+  public Iterable<Coordinate> getCoordinates() {
     return myPieces.keySet();
   }
 

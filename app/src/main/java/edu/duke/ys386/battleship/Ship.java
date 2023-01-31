@@ -47,11 +47,12 @@ public interface Ship<T> {
    * Return the view-specific information at the given coordinate. This coordinate
    * must be part of the ship.
    * 
-   * @param where is the coordinate to return information for
+   * @param where  is the coordinate to return information for
+   * @param myShip is the view of the information
    * @throws IllegalArgumentException if where is not part of the Ship
    * @return The view-specific information at that coordinate.
    */
-  public T getDisplayInfoAt(Coordinate where);
+  public T getDisplayInfoAt(Coordinate where, boolean myShip);
 
   /**
    * Get the name of this Ship, such as "submarine".
@@ -62,6 +63,7 @@ public interface Ship<T> {
 
   /**
    * Get all of the Coordinates that this Ship occupies.
+   * 
    * @return An Iterable with the coordinates that this Ship occupies
    */
   public Iterable<Coordinate> getCoordinates();

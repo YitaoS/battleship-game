@@ -37,9 +37,9 @@ public class BasicShipTest {
   @Test
   public void test_get_display_info_at() {
     RectangleShip<Character> rs = new RectangleShip<Character>("RtShip", new Coordinate(0, 2), 2, 1, 's', '*');
-    assertEquals(rs.getDisplayInfoAt(new Coordinate(0, 2)), 's');
+    assertEquals(rs.getDisplayInfoAt(new Coordinate(0, 2), true), 's');
     rs.recordHitAt(new Coordinate(0, 2));
-    assertEquals(rs.getDisplayInfoAt(new Coordinate(0, 2)), '*');
+    assertEquals(rs.getDisplayInfoAt(new Coordinate(0, 2), true), '*');
 
   }
 
@@ -50,10 +50,10 @@ public class BasicShipTest {
   }
 
   @Test
-  public void test_get_coordinate(){
+  public void test_get_coordinate() {
     RectangleShip<Character> rs = new RectangleShip<Character>("RtShip", new Coordinate(0, 2), 2, 1, 's', '*');
     assertEquals(rs.getName(), "RtShip");
-    for(Coordinate s:rs.getCoordinates()){
+    for (Coordinate s : rs.getCoordinates()) {
       assertDoesNotThrow(() -> rs.checkCoordinateInThisShip(s));
     }
   }
