@@ -2,6 +2,7 @@ package edu.duke.ys386.battleship;
 
 import java.util.HashMap;
 
+/** This class represent a basic ship */
 public abstract class BasicShip<T> implements Ship<T> {
   protected HashMap<Coordinate, Boolean> myPieces;
   protected ShipDisplayInfo<T> myDisplayInfo;

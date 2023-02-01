@@ -1,8 +1,25 @@
-Where would you like to put your ship?
+--------------------------------------------------------------------------------
+Player A: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 "Submarines" ships that are 1x2
+3 "Destroyers" that are 1x3
+3 "Battleships" that are 1x4
+2 "Carriers" that are 1x6
+--------------------------------------------------------------------------------
+
+Player A where do you want to place a Submarine?
+java.io.IOException: That placement is invalid: the ship goes off the bottom of the board
+.
+Please input an valid placement!
+Player A where do you want to place a Submarine?
   0|1|2|3|4|5|6|7|8|9
-A  | | | | | | | | |  A
-B  | | | | | | | | |  B
-C s| | | | | | | | |  C
+A  |s| | | | | | | |  A
+B  |s| | | | | | | |  B
+C  | | | | | | | | |  C
 D  | | | | | | | | |  D
 E  | | | | | | | | |  E
 F  | | | | | | | | |  F
@@ -21,4 +38,584 @@ R  | | | | | | | | |  R
 S  | | | | | | | | |  S
 T  | | | | | | | | |  T
   0|1|2|3|4|5|6|7|8|9
+Player A where do you want to place a Submarine?
+  0|1|2|3|4|5|6|7|8|9
+A  |s| |s| | | | | |  A
+B  |s| |s| | | | | |  B
+C  | | | | | | | | |  C
+D  | | | | | | | | |  D
+E  | | | | | | | | |  E
+F  | | | | | | | | |  F
+G  | | | | | | | | |  G
+H  | | | | | | | | |  H
+I  | | | | | | | | |  I
+J  | | | | | | | | |  J
+K  | | | | | | | | |  K
+L  | | | | | | | | |  L
+M  | | | | | | | | |  M
+N  | | | | | | | | |  N
+O  | | | | | | | | |  O
+P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
+T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9
+Player A where do you want to place a Destroyer?
+  0|1|2|3|4|5|6|7|8|9
+A  |s|d|s| | | | | |  A
+B  |s|d|s| | | | | |  B
+C  | |d| | | | | | |  C
+D  | | | | | | | | |  D
+E  | | | | | | | | |  E
+F  | | | | | | | | |  F
+G  | | | | | | | | |  G
+H  | | | | | | | | |  H
+I  | | | | | | | | |  I
+J  | | | | | | | | |  J
+K  | | | | | | | | |  K
+L  | | | | | | | | |  L
+M  | | | | | | | | |  M
+N  | | | | | | | | |  N
+O  | | | | | | | | |  O
+P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
+T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9
+--------------------------------------------------------------------------------
+Player A: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
 
+2 "Submarines" ships that are 1x2
+3 "Destroyers" that are 1x3
+3 "Battleships" that are 1x4
+2 "Carriers" that are 1x6
+--------------------------------------------------------------------------------
+
+Player B where do you want to place a Submarine?
+  0|1|2|3|4|5|6|7|8|9
+A  | | | | | | | | |  A
+B  | | | | | | | | |  B
+C  | | | | | | | | |  C
+D  | | | | | | | | |  D
+E  | | | | | | | | |  E
+F  | | | | | | | | |  F
+G  | | | | | | | | |  G
+H  | | | | | | | | |  H
+I  | | | | | | | | |  I
+J  | | | | | | | | |  J
+K  | | | | | | | | |  K
+L  | | | | | | | | |  L
+M  | | | | | | | | |  M
+N  | | | | | | | | |  N
+O  | | | | | | | | |  O
+P s| | | | | | | | |  P
+Q s| | | | | | | | |  Q
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
+T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9
+Player B where do you want to place a Submarine?
+  0|1|2|3|4|5|6|7|8|9
+A  | | | | | | | | |  A
+B  | | | | | | | | |  B
+C  | | | | | | | | |  C
+D  | | | | | | | | |  D
+E  | | | | | | | | |  E
+F  | | | | | | | | |  F
+G  | | | | | | | | |  G
+H  | | | | | | | | |  H
+I  | | | | | | | | |  I
+J  | | | | | | | | |  J
+K  | | | | | | | | |  K
+L  | | | | | | | | |  L
+M  | | | | | | | | |  M
+N  | | | | | | | | |  N
+O  | | | | | | | | |  O
+P s|s|s| | | | | | |  P
+Q s| | | | | | | | |  Q
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
+T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9
+Player B where do you want to place a Destroyer?
+  0|1|2|3|4|5|6|7|8|9
+A  | | | | | | | | |  A
+B  | | | | | | | | |  B
+C  | | | | | | | | |  C
+D  | | | | | | | | |  D
+E  | | | | | | | | |  E
+F  | | | | | | | | |  F
+G  | | | | | | | | |  G
+H  | | | | | | | | |  H
+I  | | | | | | | | |  I
+J  | | | | | | | | |  J
+K  | | | | | | | | |  K
+L  | | | | | | | | |  L
+M  | | | | | | | | |  M
+N  | | | | | | | | |  N
+O  | | | | | | | | |  O
+P s|s|s| | | | | | |  P
+Q s|d|d|d| | | | | |  Q
+R  | | | | | | | | |  R
+S  | | | | | | | | |  S
+T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9
+A's turn:
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s|d|s| | | | | |  A                A  | | | | | | | | |  A
+B  |s|d|s| | | | | |  B                B  | | | | | | | | |  B
+C  | |d| | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | | |  D                D  | | | | | | | | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player A where do you want to FIRE AT?
+You missed!
+B's turn:
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  | | | | | | | | |  A                A  | | | | | | | | |  A
+B  | | | | | | | | |  B                B  | | | | | | | | |  B
+C  | | | | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | | |  D                D  | | | | | | | | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P s|s|s| | | | | | |  P                P  | | | | | | | | |  P
+Q s|d|d|d| | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player B where do you want to FIRE AT?
+You missed!
+A's turn:
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s|d|s| | | | | |  A                A  | | | | | | | | |  A
+B  |s|d|s| | | | | |  B                B  | | | | | | | | |  B
+C  | |d| | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | | |  D                D  | | | | | | | | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | |X| | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P  | | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player A where do you want to FIRE AT?
+You hit a Submarine!
+B's turn:
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  | | | | | | | | |  A                A X| | | | | | | | |  A
+B  | | | | | | | | |  B                B  | | | | | | | | |  B
+C  | | | | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | | |  D                D  | | | | | | | | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P *|s|s| | | | | | |  P                P  | | | | | | | | |  P
+Q s|d|d|d| | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player B where do you want to FIRE AT?
+java.io.IOException: That placement is invalid: the ship goes off the bottom of the board
+.
+Please input an valid coordinate!
+Player B where do you want to FIRE AT?
+java.lang.IllegalArgumentException: Coordinate takes 2 length string as input: an upper character and a number, but your input is :z10
+Please input an valid coordinate!
+Player B where do you want to FIRE AT?
+java.lang.IllegalArgumentException: Coordinate takes 2 length string as input: an upper character and a number, but your input is :a10
+Please input an valid coordinate!
+Player B where do you want to FIRE AT?
+You hit a Destroyer!
+A's turn:
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s|d|s| | | | | |  A                A  | | | | | | | | |  A
+B  |s|d|s| | | | | |  B                B  | | | | | | | | |  B
+C  | |*| | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | | |  D                D  | | | | | | | | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | |X| | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P s| | | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player A where do you want to FIRE AT?
+You hit a Submarine!
+B's turn:
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  | | | | | | | | |  A                A X| | | | | | | | |  A
+B  | | | | | | | | |  B                B  | | | | | | | | |  B
+C  | | | | | | | | |  C                C  | |d| | | | | | |  C
+D  | | | | | | | | |  D                D  | | | | | | | | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P *|*|s| | | | | | |  P                P  | | | | | | | | |  P
+Q s|d|d|d| | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player B where do you want to FIRE AT?
+You missed!
+A's turn:
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s|d|s| | | | | |  A                A  | | | | | | | | |  A
+B  |s|d|s| | | | | |  B                B  | | | | | | | | |  B
+C  | |*| | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | | |  D                D  | | | | | | | | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | |X| | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P s|s| | | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player A where do you want to FIRE AT?
+You hit a Submarine!
+B's turn:
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  | | | | | | | | |  A                A X| | | | | | | | |  A
+B  | | | | | | | | |  B                B  | | | | | | | | |  B
+C  | | | | | | | | |  C                C  | |d| | | | | | |  C
+D  | | | | | | | | |  D                D  | | |X| | | | | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P *|*|*| | | | | | |  P                P  | | | | | | | | |  P
+Q s|d|d|d| | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player B where do you want to FIRE AT?
+You missed!
+A's turn:
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s|d|s| | | | | |  A                A  | | | | | | | | |  A
+B  |s|d|s| | | | | |  B                B  | | | | | | | | |  B
+C  | |*| | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | | |  D                D  | | | | | | | | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | |X| | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P s|s|s| | | | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player A where do you want to FIRE AT?
+You missed!
+B's turn:
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  | | | | | | | | |  A                A X| | | | | | | | |  A
+B  | | | | | | | | |  B                B  | | | | | | | | |  B
+C  | | | | | | | | |  C                C  | |d| | | | | | |  C
+D  | | | | | | | | |  D                D  | | |X| | |X| | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P *|*|*| | | | | | |  P                P  | | | | | | | | |  P
+Q s|d|d|d| | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player B where do you want to FIRE AT?
+You missed!
+A's turn:
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s|d|s| | | | | |  A                A  | | | | | | | | |  A
+B  |s|d|s| | | | | |  B                B  | | | | | | | | |  B
+C  | |*| | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | | |  D                D  | | | | | | | | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | |X| | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P s|s|s| |X| | | | |  P
+Q  | | | | | | | | |  Q                Q  | | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player A where do you want to FIRE AT?
+You hit a Submarine!
+B's turn:
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  | | | | | | | | |  A                A X| | | | | | | | |  A
+B  | | | | | | | | |  B                B  | | | | | | | | |  B
+C  | | | | | | | | |  C                C  | |d| | | | | | |  C
+D  | | | | | | | | |  D                D  | | |X| | |X| | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P *|*|*| | | | | | |  P                P  | | | | | | | | |  P
+Q *|d|d|d| | | | | |  Q                Q X| | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player B where do you want to FIRE AT?
+You missed!
+A's turn:
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s|d|s| | | | | |  A                A  | | | | | | | | |  A
+B  |s|d|s| | | | | |  B                B  | | | | | | | | |  B
+C  | |*| | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | | |  D                D  | | | | | | | | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | |X| | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P s|s|s| |X| | | | |  P
+Q  | | | | | | | | |  Q                Q s| | | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player A where do you want to FIRE AT?
+You hit a Destroyer!
+B's turn:
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  | | | | | | | | |  A                A X| | | | | | | | |  A
+B  | | | | | | | | |  B                B  | | | | | | | | |  B
+C  | | | | | | | | |  C                C  | |d| | | | | | |  C
+D  | | | | | | | | |  D                D  | | |X| | |X| | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P *|*|*| | | | | | |  P                P  | | | | | | | | |  P
+Q *|*|d|d| | | | | |  Q                Q X|X| | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player B where do you want to FIRE AT?
+You missed!
+A's turn:
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s|d|s| | | | | |  A                A  | | | | | | | | |  A
+B  |s|d|s| | | | | |  B                B  | | | | | | | | |  B
+C  | |*| | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | | |  D                D  | | | | | | | | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | |X| | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P s|s|s| |X| | | | |  P
+Q  | | | | | | | | |  Q                Q s|d| | | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player A where do you want to FIRE AT?
+You hit a Destroyer!
+B's turn:
+     Your ocean                           A's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  | | | | | | | | |  A                A X| | | | | | | | |  A
+B  | | | | | | | | |  B                B  | | | | | | | | |  B
+C  | | | | | | | | |  C                C  | |d| | | | | | |  C
+D  | | | | | | | | |  D                D  | | |X| | |X| | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | | | | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P *|*|*| | | | | | |  P                P  | | | | | | | | |  P
+Q *|*|*|d| | | | | |  Q                Q X|X|X| | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player B where do you want to FIRE AT?
+You missed!
+A's turn:
+     Your ocean                           B's ocean
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+A  |s|d|s| | | | | |  A                A  | | | | | | | | |  A
+B  |s|d|s| | | | | |  B                B  | | | | | | | | |  B
+C  | |*| | | | | | |  C                C  | | | | | | | | |  C
+D  | | | | | | | | |  D                D  | | | | | | | | |  D
+E  | | | | | | | | |  E                E  | | | | | | | | |  E
+F  | | | | | | | | |  F                F  | | | | | | | | |  F
+G  | | | | | | | | |  G                G  | | | | | | | | |  G
+H  | | | | | | | | |  H                H  | | | | | | | | |  H
+I  | | | | | | | | |  I                I  | | | | | | | | |  I
+J  | | | | | | | | |  J                J  | | | | | | | | |  J
+K  | | | | | | | | |  K                K  | | | | | | | | |  K
+L  | | | | | | | | |  L                L  | |X| | | | | | |  L
+M  | | | | | | | | |  M                M  | | | | | | | | |  M
+N  | | | | | | | | |  N                N  | | | | | | | | |  N
+O  | | | | | | | | |  O                O  | | | | | | | | |  O
+P  | | | | | | | | |  P                P s|s|s| |X| | | | |  P
+Q  | | | | | | | | |  Q                Q s|d|d| | | | | | |  Q
+R  | | | | | | | | |  R                R  | | | | | | | | |  R
+S  | | | | | | | | |  S                S  | | | | | | | | |  S
+T  | | | | | | | | |  T                T  | | | | | | | | |  T
+  0|1|2|3|4|5|6|7|8|9                    0|1|2|3|4|5|6|7|8|9
+Player A where do you want to FIRE AT?
+You hit a Destroyer!
+A win!

@@ -119,6 +119,13 @@ public class BattleShipBoard<T> implements Board<T> {
     return s;
   }
 
+  /**
+   * fire at a coorfinate within the board
+   * 
+   * @param c the coordinate is shooted
+   * @return the ship is shooted,or null if missed
+   */
+
   public Ship<T> fireAt(Coordinate c) {
     for (Ship<T> ship : myShips) {
       if (ship.occupiesCoordinates(c)) {
@@ -130,13 +137,24 @@ public class BattleShipBoard<T> implements Board<T> {
     return null;
   }
 
+  /**
+   * look at what is in a position of the board from enemy view
+   * 
+   * @param where the position
+   * @return the ship in the position. Otherwise, null
+   */
   public T whatIsAtForEnemy(Coordinate where) {
     return whatIsAt(where, false);
   }
 
-  public boolean shipAllSunk(){
-    for(Ship<T> s: myShips){
-      if(!s.isSunk()){
+  /**
+   * check if a ship is sunksunk
+   * 
+   * @return true if sunk, or not sunk
+   */
+  public boolean shipAllSunk() {
+    for (Ship<T> s : myShips) {
+      if (!s.isSunk()) {
         return false;
       }
     }

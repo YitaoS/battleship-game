@@ -18,23 +18,51 @@ public class TextPlayer {
   final ArrayList<String> shipsToPlace;
   final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
 
+  /**
+   * get the textplayer's name
+   * 
+   * @return name
+   */
   String getName() {
     return name;
   }
 
+  /**
+   * get the board of the playerplayer
+   * 
+   * @return board
+   */
   Board<Character> getBoard() {
     return theBoard;
   }
 
+  /**
+   * get the view of the player
+   *
+   * @return view
+   */
   BoardTextView getView() {
     return view;
   }
+
+  /**
+   * Create a testplayer
+   *
+   * @param name  of the player
+   * @param board of the player
+   * @param i     the player's input stream
+   * @param o     the output of the stream
+   * @param sf    the ship factory to create the ship
+   * @param s     the number of submarine to create
+   * @param d     the number of destroyer to create
+   * @param b     the number of battleship to create
+   * @param c     the number of carrier to create
+   */
   public TextPlayer(String n, Board<Character> board,
-                    BufferedReader i,
-                    PrintStream o,
-                    AbstractShipFactory<Character> sf,
-                    int s,int d,int b, int c
-  ) {
+      BufferedReader i,
+      PrintStream o,
+      AbstractShipFactory<Character> sf,
+      int s, int d, int b, int c) {
     name = n;
     theBoard = board;
     view = new BoardTextView(board);
@@ -43,10 +71,11 @@ public class TextPlayer {
     shipFactory = sf;
     shipsToPlace = new ArrayList<>();
     shipCreationFns = new HashMap<>();
-    setupShipCreationList(s,d,b,c);
+    setupShipCreationList(s, d, b, c);
     setupShipCreationMap();
   }
 
+  /** Create a map match the name of ship to its creator function */
   protected void setupShipCreationMap() {
     shipCreationFns.put("Submarine", (p) -> shipFactory.makeSubmarine(p));
     shipCreationFns.put("Destroyer", (p) -> shipFactory.makeDestroyer(p));
@@ -55,13 +84,28 @@ public class TextPlayer {
 
   }
 
-  protected void setupShipCreationList(int s,int d,int b, int c) {
+  /**
+   * Set up a ship creation list for player to create
+   *
+   * @param s the number of submarine to create
+   * @param d the number of destroyer to create
+   * @param b the number of battleship to create
+   * @param c the number of carrier to create
+   */
+  protected void setupShipCreationList(int s, int d, int b, int c) {
     shipsToPlace.addAll(Collections.nCopies(s, "Submarine"));
     shipsToPlace.addAll(Collections.nCopies(d, "Destroyer"));
     shipsToPlace.addAll(Collections.nCopies(b, "Battleship"));
     shipsToPlace.addAll(Collections.nCopies(c, "Carrier"));
   }
 
+  /**
+   * read a {@link Placement} from input
+   * 
+   * @param prompt the instruction for player input
+   * @return the placement on the board
+   * @throws IOException happens if no input or invalid input
+   */
   public Placement readPlacement(String prompt) throws IOException {
     out.println(prompt);
     String s = inputReader.readLine();
@@ -70,6 +114,14 @@ public class TextPlayer {
     }
     return new Placement(s);
   }
+
+  /**
+   * read a {@link Coordinate} from input
+   * 
+   * @param prompt the instruction for player input
+   * @return the coordinate on the board
+   * @throws IOException happens if no input or invalid input
+   */
 
   public Coordinate readCoordinate(String prompt) throws IOException {
     out.println(prompt);
@@ -80,16 +132,25 @@ public class TextPlayer {
     return new Coordinate(s);
   }
 
+  /**
+   * ask the player to do one placement of current ship to place
+   * 0
+   * 
+   * @param shipName the name of the ship to create
+   * @param createFn the creator function name of the ship
+   * @throws IOException happens if invalid input
+   */
   public void doOnePlacement(String shipName, Function<Placement, Ship<Character>> createFn) throws IOException {
     Placement p = readPlacement("Player " + name + " where do you want to place a " + shipName + "?");
     Ship<Character> s = createFn.apply(p);
     String error = theBoard.tryAddShip(s);
-    if(error!=""){
+    if (error != "") {
       throw new IOException(error);
     }
     out.print(view.displayMyOwnBoard());
   }
 
+  /** ask the player to do placement phase */
   public void doPlacementPhase() {
     // (a) display the starting (empty) board
     // (b) print the instructions message (from the README,
@@ -122,8 +183,19 @@ public class TextPlayer {
     }
   }
 
+  /**
+   * ask to player to do one attackattack
+   * 0
+   * 
+   * @param enemyBoard
+   * @throws IOException
+   */
   public void doOneAttack(Board<Character> enemyBoard) throws IOException {
     Coordinate p = readCoordinate("Player " + name + " where do you want to FIRE AT?");
+    String error = theBoard.checkIfWithinBorder(p);
+    if (error != "") {
+      throw new IOException(error);
+    }
     Ship<Character> s = enemyBoard.fireAt(p);
     String prompt = "You missed!";
     if (s != null) {
@@ -132,6 +204,14 @@ public class TextPlayer {
     out.println(prompt);
   }
 
+  /**
+   * ask a player to play a turn
+   * 0
+   * 
+   * @param enemyBoard opposite board
+   * @param enemyView  opposite view
+   * @param enemyName  oppsite name
+   */
   public void playOneTurn(Board<Character> enemyBoard, BoardTextView enemyView, String enemyName) {
     out.println(name + "'s turn:");
     String myHeader = "Your ocean";
@@ -149,6 +229,12 @@ public class TextPlayer {
     }
   }
 
+  /**
+   * show if the player lose the gamegame
+   * 0
+   * 
+   * @return true if lose, Or false
+   */
   public boolean loseTheGame() {
     return theBoard.shipAllSunk();
   }

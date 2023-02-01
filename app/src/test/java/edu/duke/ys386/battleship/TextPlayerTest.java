@@ -59,15 +59,15 @@ public class TextPlayerTest {
   @Test
   void test_do_placement_phase() {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n", bytes);
+    TextPlayer player = createTextPlayer(10, 20, "A0V\nA1V\nA4v\nA7V\nA8V\n", bytes);
     player.doPlacementPhase();
     AbstractShipFactory<Character> asf = new V1ShipFactory();
     Board<Character> tb = new BattleShipBoard<>(10, 20, 'X');
-    Ship<Character> rts1 = asf.makeSubmarine(new Placement("b2V"));
-    Ship<Character> rts2 = asf.makeSubmarine(new Placement("C8h"));
+    Ship<Character> rts1 = asf.makeSubmarine(new Placement("A0V"));
+    Ship<Character> rts2 = asf.makeSubmarine(new Placement("A1v"));
     Ship<Character> rts3 = asf.makeDestroyer(new Placement("A4V"));
-    Ship<Character> rts4 = asf.makeDestroyer(new Placement("D0V"));
-    Ship<Character> rts5 = asf.makeDestroyer(new Placement("H1V"));
+    Ship<Character> rts4 = asf.makeDestroyer(new Placement("A7V"));
+    Ship<Character> rts5 = asf.makeDestroyer(new Placement("A8V"));
     BoardTextView btv = new BoardTextView(tb);
     String prompt = "--------------------------------------------------------------------------------\n" +
         "Player A: you are going to place the following ships (which are all\n" +
@@ -126,14 +126,14 @@ public class TextPlayerTest {
   @Test
   void test_do_one_attack() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player1 = createTextPlayer(10, 20, "B2V\nC8\n", bytes);
+    TextPlayer player1 = createTextPlayer(10, 20, "B2V\nC6\n", bytes);
     player1.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
-    TextPlayer player2 = createTextPlayer(10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n", bytes);
+    TextPlayer player2 = createTextPlayer(10, 20, "B2V\nC6H\nA4v\nD0V\nH1V\n", bytes);
     player2.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
     player2.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
     player1.doOneAttack(player2.getBoard());
-    assertEquals(player2.theBoard.whatIsAtForSelf(new Coordinate("C8")), '*');
-    assertEquals(player2.theBoard.whatIsAtForEnemy(new Coordinate("C8")), 's');
+    assertEquals(player2.theBoard.whatIsAtForSelf(new Coordinate("C6")), '*');
+    assertEquals(player2.theBoard.whatIsAtForEnemy(new Coordinate("C6")), 's');
     assertThrows(IOException.class, () -> {
       player1.doOneAttack(player2.getBoard());
     });
@@ -143,19 +143,19 @@ public class TextPlayerTest {
   void test_play_one_turn() {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     TextPlayer player1 = createTextPlayer(10, 20,
-        "B2V\nC8H\nA4v\nD0V\nH1V\nc8v\n\nC8\nZ6\n", bytes);
+        "B2V\nC6H\nA4v\nD0V\nH1V\nc8v\n\nC6\nZ6\nA5\n", bytes);
     player1.doPlacementPhase();
-    TextPlayer player2 = createTextPlayer(10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n",
+    TextPlayer player2 = createTextPlayer(10, 20, "B2V\nC6H\nA4v\nD0V\nH1V\n",
         bytes);
     player2.doPlacementPhase();
     player1.playOneTurn(player2.getBoard(), player2.getView(),
         player2.getName());
     player1.playOneTurn(player2.getBoard(), player2.getView(),
         player2.getName());
-    assertEquals(player2.getBoard().whatIsAtForSelf(new Coordinate("C8")), '*');
-    assertEquals(player2.getBoard().whatIsAtForEnemy(new Coordinate("C8")), 's');
+    assertEquals(player2.getBoard().whatIsAtForSelf(new Coordinate("C6")), '*');
+    assertEquals(player2.getBoard().whatIsAtForEnemy(new Coordinate("C6")), 's');
     assertEquals(player2.getBoard().whatIsAtForSelf(new Coordinate("Z6")), null);
-    assertEquals(player2.getBoard().whatIsAtForEnemy(new Coordinate("Z6")), 'X');
+    assertEquals(player2.getBoard().whatIsAtForEnemy(new Coordinate("Z6")), null);
   }
 
 }

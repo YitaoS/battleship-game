@@ -1,7 +1,7 @@
 package edu.duke.ys386.battleship;
 
 public class InBoundsRuleChecker<T> extends PlacementRuleChecker<T> {
-
+  /** create a in bound rule checker */
   public InBoundsRuleChecker(PlacementRuleChecker<T> next) {
     super(next);
   }
@@ -10,7 +10,7 @@ public class InBoundsRuleChecker<T> extends PlacementRuleChecker<T> {
   protected String checkMyRule(Ship<T> theShip, Board<T> theBoard) {
     for (Coordinate c : theShip.getCoordinates()) {
       String check = theBoard.checkIfWithinBorder(c);
-      if (check != ""){
+      if (check != "") {
         return check;
       }
     }
