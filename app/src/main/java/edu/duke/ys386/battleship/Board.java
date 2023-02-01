@@ -1,3 +1,4 @@
+
 package edu.duke.ys386.battleship;
 
 public interface Board<T> {

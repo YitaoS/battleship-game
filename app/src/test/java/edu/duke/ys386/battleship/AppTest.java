@@ -22,22 +22,22 @@ import org.junit.jupiter.api.parallel.Resources;
 
 class AppTest {
   // @Disabled
-  @Test 
-  public void test_check_who_win()throws IOException{
+  @Test
+  public void test_check_who_win() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player1 = createTextPlayer("A",10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n", bytes);
+    TextPlayer player1 = createTextPlayer("A", 10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n", bytes);
     player1.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
-    TextPlayer player2 = createTextPlayer("B",10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n", bytes);
+    TextPlayer player2 = createTextPlayer("B", 10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n", bytes);
     player2.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
     App app = new App(player1, player2);
-    assertEquals(app.checkWhoWin(app), null);
+    assertEquals(app.checkWhoWin(), null);
     player1.theBoard.fireAt(new Coordinate("b2"));
     player1.theBoard.fireAt(new Coordinate("c2"));
-    assertEquals(app.checkWhoWin(app), "B");
+    assertEquals(app.checkWhoWin(), "B");
     player2.theBoard.fireAt(new Coordinate("b2"));
     player2.theBoard.fireAt(new Coordinate("c2"));
     player1.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
-    assertEquals(app.checkWhoWin(app), "A");
+    assertEquals(app.checkWhoWin(), "A");
   }
   @Test
   @ResourceLock(value = Resources.SYSTEM_OUT, mode = ResourceAccessMode.READ_WRITE)
@@ -66,11 +66,40 @@ class AppTest {
     String actual = bytes.toString();
     assertEquals(expected, actual);
   }
-  private TextPlayer createTextPlayer(String name,int w, int h, String inputData, OutputStream bytes) {
+
+  @Test
+  @ResourceLock(value = Resources.SYSTEM_OUT, mode = ResourceAccessMode.READ_WRITE)
+  void test_main1() throws IOException {
+    // (1) getting the input files in a path independent way: we use
+    // getResourceAsStream for this.
+    // (2) Changing around System.in and System.out
+    // (3) Reading everything from a file.
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    PrintStream out = new PrintStream(bytes, true);
+    InputStream input = getClass().getClassLoader().getResourceAsStream("input1.txt");
+    assertNotNull(input);
+    InputStream expectedStream = getClass().getClassLoader().getResourceAsStream("output1.txt");
+    assertNotNull(expectedStream);
+    InputStream oldIn = System.in;
+    PrintStream oldOut = System.out;
+    try {
+      System.setIn(input);
+      System.setOut(out);
+      App.main(new String[0]);
+    } finally {
+      System.setIn(oldIn);
+      System.setOut(oldOut);
+    }
+    String expected = new String(expectedStream.readAllBytes());
+    String actual = bytes.toString();
+    assertEquals(expected, actual);
+  }
+
+  private TextPlayer createTextPlayer(String name, int w, int h, String inputData, OutputStream bytes) {
     BufferedReader input = new BufferedReader(new StringReader(inputData));
     PrintStream output = new PrintStream(bytes, true);
     Board<Character> board = new BattleShipBoard<Character>(w, h, 'X');
     V1ShipFactory shipFactory = new V1ShipFactory();
-    return new TextPlayer(name, board, input, output, shipFactory);
+    return new TextPlayer(name, board, input, output, shipFactory, 2, 3, 0, 0);
   }
 }

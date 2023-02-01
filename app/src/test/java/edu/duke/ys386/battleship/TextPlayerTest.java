@@ -1,5 +1,6 @@
 package edu.duke.ys386.battleship;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -10,6 +11,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.StringReader;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class TextPlayerTest {
@@ -28,7 +30,7 @@ public class TextPlayerTest {
       assertEquals(prompt + "\n", bytes.toString()); // should have printed prompt and newline
       bytes.reset(); // clear out bytes for next time around
     }
-
+    assertThrows(IOException.class, () -> player.readPlacement(prompt));
   }
 
   @Test
@@ -51,11 +53,11 @@ public class TextPlayerTest {
     PrintStream output = new PrintStream(bytes, true);
     Board<Character> board = new BattleShipBoard<Character>(w, h, 'X');
     V1ShipFactory shipFactory = new V1ShipFactory();
-    return new TextPlayer("A", board, input, output, shipFactory);
+    return new TextPlayer("A", board, input, output, shipFactory, 2, 3, 0, 0);
   }
 
   @Test
-  void test_do_placement_phase() throws IOException {
+  void test_do_placement_phase() {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     TextPlayer player = createTextPlayer(10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n", bytes);
     player.doPlacementPhase();
@@ -72,7 +74,7 @@ public class TextPlayerTest {
         "rectangular). For each ship, type the coordinate of the upper left\n" +
         "side of the ship, followed by either H (for horizontal) or V (for\n" +
         "vertical).  For example M4H would place a ship horizontally starting\n" +
-        "at M4 and going to the right.  You have\n\n " +
+        "at M4 and going to the right.  You have\n\n" +
         "2 \"Submarines\" ships that are 1x2\n" +
         "3 \"Destroyers\" that are 1x3\n" +
         "3 \"Battleships\" that are 1x4\n" +
@@ -91,16 +93,69 @@ public class TextPlayerTest {
     s += hint1 + btv.displayMyOwnBoard();
     tb.tryAddShip(rts5);
     s += hint1 + btv.displayMyOwnBoard();
-
     assertEquals(bytes.toString(), s);
 
   }
 
   @Test
   void test_unvalid_input_for_do_placement_phase() throws IOException {
-    TextPlayer player = createTextPlayer(10, 20, "", new ByteArrayOutputStream());
-    assertThrows(IOException.class, () -> player.doPlacementPhase());
-    TextPlayer player1 = createTextPlayer(10, 20, "A0Q", new ByteArrayOutputStream());
-    assertThrows(IllegalArgumentException.class, () -> player1.doPlacementPhase());
+    TextPlayer player = createTextPlayer(10, 20, "\nAw5\nA1V\nA2v\nA4v\nA5V\nA6V\n", new ByteArrayOutputStream());
+    TextPlayer player1 = createTextPlayer(10, 20, "A0Q\nA0V\nA2v\nA7v\nA8V\nA9V\n", new ByteArrayOutputStream());
+    assertDoesNotThrow(() -> player.doPlacementPhase());
+    assertDoesNotThrow(() -> player1.doPlacementPhase());
   }
+
+  @Test
+  void test_read_coordinate() throws IOException {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    TextPlayer player = createTextPlayer(10, 20, "B2\nC8\na4\n", bytes);
+    String prompt = "Please enter a location for a ship:";
+    Coordinate[] expected = new Coordinate[3];
+    expected[0] = new Coordinate(1, 2);
+    expected[1] = new Coordinate(2, 8);
+    expected[2] = new Coordinate(0, 4);
+    for (int i = 0; i < expected.length; i++) {
+      Coordinate p = player.readCoordinate(prompt);
+      assertEquals(p, expected[i]); // did we get the right Coordinate back
+      assertEquals(prompt + "\n", bytes.toString()); // should have printed prompt and newline
+      bytes.reset(); // clear out bytes for next time around
+    }
+
+  }
+
+  @Test
+  void test_do_one_attack() throws IOException {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    TextPlayer player1 = createTextPlayer(10, 20, "B2V\nC8\n", bytes);
+    player1.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
+    TextPlayer player2 = createTextPlayer(10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n", bytes);
+    player2.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
+    player2.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
+    player1.doOneAttack(player2.getBoard());
+    assertEquals(player2.theBoard.whatIsAtForSelf(new Coordinate("C8")), '*');
+    assertEquals(player2.theBoard.whatIsAtForEnemy(new Coordinate("C8")), 's');
+    assertThrows(IOException.class, () -> {
+      player1.doOneAttack(player2.getBoard());
+    });
+  }
+
+  @Test
+  void test_play_one_turn() {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    TextPlayer player1 = createTextPlayer(10, 20,
+        "B2V\nC8H\nA4v\nD0V\nH1V\nc8v\n\nC8\nZ6\n", bytes);
+    player1.doPlacementPhase();
+    TextPlayer player2 = createTextPlayer(10, 20, "B2V\nC8H\nA4v\nD0V\nH1V\n",
+        bytes);
+    player2.doPlacementPhase();
+    player1.playOneTurn(player2.getBoard(), player2.getView(),
+        player2.getName());
+    player1.playOneTurn(player2.getBoard(), player2.getView(),
+        player2.getName());
+    assertEquals(player2.getBoard().whatIsAtForSelf(new Coordinate("C8")), '*');
+    assertEquals(player2.getBoard().whatIsAtForEnemy(new Coordinate("C8")), 's');
+    assertEquals(player2.getBoard().whatIsAtForSelf(new Coordinate("Z6")), null);
+    assertEquals(player2.getBoard().whatIsAtForEnemy(new Coordinate("Z6")), 'X');
+  }
+
 }
