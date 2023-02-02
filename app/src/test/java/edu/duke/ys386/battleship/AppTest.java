@@ -39,6 +39,7 @@ class AppTest {
     player1.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
     assertEquals(app.checkWhoWin(), "A");
   }
+  
   @Test
   @ResourceLock(value = Resources.SYSTEM_OUT, mode = ResourceAccessMode.READ_WRITE)
   void test_main() throws IOException {

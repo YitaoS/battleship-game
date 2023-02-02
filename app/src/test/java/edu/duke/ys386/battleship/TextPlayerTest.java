@@ -48,6 +48,13 @@ public class TextPlayerTest {
     assertEquals(bytes.toString(), s);
   }
 
+  @Test
+  void test_null_input_do_one_placement() throws IOException {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    TextPlayer player = createTextPlayer(10, 20, "Z9v\n", bytes);
+    assertThrows(IOException.class, ()->player.doOnePlacement("Destroyer", (p) -> player.shipFactory.makeDestroyer(p)));
+  }
+
   private TextPlayer createTextPlayer(int w, int h, String inputData, OutputStream bytes) {
     BufferedReader input = new BufferedReader(new StringReader(inputData));
     PrintStream output = new PrintStream(bytes, true);
@@ -98,7 +105,7 @@ public class TextPlayerTest {
   }
 
   @Test
-  void test_unvalid_input_for_do_placement_phase() throws IOException {
+  void test_invalid_input_for_do_placement_phase() throws IOException {
     TextPlayer player = createTextPlayer(10, 20, "\nAw5\nA1V\nA2v\nA4v\nA5V\nA6V\n", new ByteArrayOutputStream());
     TextPlayer player1 = createTextPlayer(10, 20, "A0Q\nA0V\nA2v\nA7v\nA8V\nA9V\n", new ByteArrayOutputStream());
     assertDoesNotThrow(() -> player.doPlacementPhase());

@@ -174,7 +174,7 @@ public class TextPlayer {
         try {
           doOnePlacement(sship, shipCreationFns.get(sship));
         } catch (Exception e) {
-          out.println(e);
+          out.println(e.getMessage());
           out.println("Please input an valid placement!");
           continue;
         }
@@ -221,7 +221,7 @@ public class TextPlayer {
       try {
         doOneAttack(enemyBoard);
       } catch (Exception e) {
-        out.println(e);
+        out.println(e.getMessage());
         out.println("Please input an valid coordinate!");
         continue;
       }
