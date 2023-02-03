@@ -42,16 +42,16 @@ class AppTest {
   
   @Test
   @ResourceLock(value = Resources.SYSTEM_OUT, mode = ResourceAccessMode.READ_WRITE)
-  void test_main() throws IOException {
+  void test_main1() throws IOException {
     // (1) getting the input files in a path independent way: we use
     // getResourceAsStream for this.
     // (2) Changing around System.in and System.out
     // (3) Reading everything from a file.
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     PrintStream out = new PrintStream(bytes, true);
-    InputStream input = getClass().getClassLoader().getResourceAsStream("input.txt");
+    InputStream input = getClass().getClassLoader().getResourceAsStream("input1.txt");
     assertNotNull(input);
-    InputStream expectedStream = getClass().getClassLoader().getResourceAsStream("output.txt");
+    InputStream expectedStream = getClass().getClassLoader().getResourceAsStream("output1.txt");
     assertNotNull(expectedStream);
     InputStream oldIn = System.in;
     PrintStream oldOut = System.out;
@@ -70,16 +70,16 @@ class AppTest {
 
   @Test
   @ResourceLock(value = Resources.SYSTEM_OUT, mode = ResourceAccessMode.READ_WRITE)
-  void test_main1() throws IOException {
+  void test_main() throws IOException {
     // (1) getting the input files in a path independent way: we use
     // getResourceAsStream for this.
     // (2) Changing around System.in and System.out
     // (3) Reading everything from a file.
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     PrintStream out = new PrintStream(bytes, true);
-    InputStream input = getClass().getClassLoader().getResourceAsStream("input1.txt");
+    InputStream input = getClass().getClassLoader().getResourceAsStream("input0.txt");
     assertNotNull(input);
-    InputStream expectedStream = getClass().getClassLoader().getResourceAsStream("output1.txt");
+    InputStream expectedStream = getClass().getClassLoader().getResourceAsStream("output.txt");
     assertNotNull(expectedStream);
     InputStream oldIn = System.in;
     PrintStream oldOut = System.out;

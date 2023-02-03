@@ -44,8 +44,8 @@ public class App {
     Board<Character> b2 = new BattleShipBoard<Character>(10, 20, 'X');
     BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     V1ShipFactory factory = new V1ShipFactory();
-    TextPlayer p1 = new TextPlayer("A", b1, input, System.out, factory, 2, 1, 0, 0);
-    TextPlayer p2 = new TextPlayer("B", b2, input, System.out, factory, 2, 1, 0, 0);
+    TextPlayer p1 = new TextPlayer("A", b1, input, System.out, factory, 2, 3, 3, 3);
+    TextPlayer p2 = new TextPlayer("B", b2, input, System.out, factory, 2, 3, 3, 3);
     App app = new App(p1, p2);
     app.player1.doPlacementPhase();
     app.player2.doPlacementPhase();
