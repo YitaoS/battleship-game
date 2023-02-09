@@ -39,10 +39,9 @@ class AppTest {
     player1.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
     assertEquals(app.checkWhoWin(), "A");
   }
-  
   @Test
   @ResourceLock(value = Resources.SYSTEM_OUT, mode = ResourceAccessMode.READ_WRITE)
-  void test_main1() throws IOException {
+  void test_main() throws IOException {
     // (1) getting the input files in a path independent way: we use
     // getResourceAsStream for this.
     // (2) Changing around System.in and System.out
@@ -51,7 +50,7 @@ class AppTest {
     PrintStream out = new PrintStream(bytes, true);
     InputStream input = getClass().getClassLoader().getResourceAsStream("input1.txt");
     assertNotNull(input);
-    InputStream expectedStream = getClass().getClassLoader().getResourceAsStream("output1.txt");
+    InputStream expectedStream = getClass().getClassLoader().getResourceAsStream("output.txt");
     assertNotNull(expectedStream);
     InputStream oldIn = System.in;
     PrintStream oldOut = System.out;
@@ -67,19 +66,18 @@ class AppTest {
     String actual = bytes.toString();
     assertEquals(expected, actual);
   }
-
   @Test
   @ResourceLock(value = Resources.SYSTEM_OUT, mode = ResourceAccessMode.READ_WRITE)
-  void test_main() throws IOException {
+  void test_main_computer_vs_computer() throws IOException {
     // (1) getting the input files in a path independent way: we use
     // getResourceAsStream for this.
     // (2) Changing around System.in and System.out
     // (3) Reading everything from a file.
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     PrintStream out = new PrintStream(bytes, true);
-    InputStream input = getClass().getClassLoader().getResourceAsStream("input0.txt");
+    InputStream input = getClass().getClassLoader().getResourceAsStream("input2.txt");
     assertNotNull(input);
-    InputStream expectedStream = getClass().getClassLoader().getResourceAsStream("output.txt");
+    InputStream expectedStream = getClass().getClassLoader().getResourceAsStream("output2.txt");
     assertNotNull(expectedStream);
     InputStream oldIn = System.in;
     PrintStream oldOut = System.out;
@@ -101,6 +99,6 @@ class AppTest {
     PrintStream output = new PrintStream(bytes, true);
     Board<Character> board = new BattleShipBoard<Character>(w, h, 'X');
     V1ShipFactory shipFactory = new V1ShipFactory();
-    return new TextPlayer(name, board, input, output, shipFactory, 2, 3, 0, 0);
+    return new TextPlayer(name, board, input, output, shipFactory, 2, 3, 0, 0,true);
   }
 }

@@ -1,0 +1,73 @@
+package edu.duke.ys386.battleship;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+public class V2ShipFactoryTest {
+  @Test
+  public void test_create_ship() {
+    V2ShipFactory f = new V2ShipFactory();
+    Placement v1_2 = new Placement(new Coordinate(1, 2), 'U');
+    assertThrows(IllegalArgumentException.class, () -> f.createShip(v1_2,1,4,'b',"Battleship"));
+  }
+
+  @Test
+  public void test_make_destroyer() {
+    V2ShipFactory f = new V2ShipFactory();
+    Placement v1_2 = new Placement(new Coordinate(1, 2), 'V');
+    Ship<Character> dst = f.makeDestroyer(v1_2);
+    checkShip(dst, "Destroyer", 'd', new Coordinate(1, 2), new Coordinate(2, 2), new Coordinate(3, 2));
+  }
+
+  @Test
+  public void test_make_Submarine() {
+    V2ShipFactory f = new V2ShipFactory();
+    Placement v1_2 = new Placement(new Coordinate(1, 2), 'V');
+    Ship<Character> dst = f.makeSubmarine(v1_2);
+    checkShip(dst, "Submarine", 's', new Coordinate(1, 2), new Coordinate(2, 2));
+    Placement h1_2 = new Placement(new Coordinate(1, 2), 'h');
+    Ship<Character> dst1 = f.makeSubmarine(h1_2);
+    checkShip(dst1, "Submarine", 's', new Coordinate(1, 2), new Coordinate(1, 3));
+
+  }
+
+  @Test
+  public void test_make_battleship() {
+    V2ShipFactory f = new V2ShipFactory();
+    Placement v1_2 = new Placement(new Coordinate(1, 2), 'U');
+    Ship<Character> dst = f.makeBattleship(v1_2);
+    Placement v2_3 = new Placement(new Coordinate(2, 3), 'D');
+    Ship<Character> dst1 = f.makeBattleship(v2_3);
+    Placement v0_0 = new Placement(new Coordinate(0, 0), 'R');
+    Ship<Character> dst2 = f.makeBattleship(v0_0);
+    Placement v0_1 = new Placement(new Coordinate(0, 1), 'L');
+    Ship<Character> dst3 = f.makeBattleship(v0_1);
+    checkShip(dst, "Battleship", 'b', new Coordinate(1, 3), new Coordinate(2, 2), new Coordinate(2, 3),
+        new Coordinate(2, 4));
+    checkShip(dst1, "Battleship", 'b', new Coordinate(2, 3), new Coordinate(2, 4), new Coordinate(2, 5),
+        new Coordinate(3, 4));
+    checkShip(dst2, "Battleship", 'b', new Coordinate(0, 0), new Coordinate(1, 0), new Coordinate(2, 0),
+        new Coordinate(1, 1));
+    checkShip(dst3, "Battleship", 'b', new Coordinate(1, 1), new Coordinate(0, 2), new Coordinate(1, 2),
+        new Coordinate(2, 2));
+  }
+
+  @Test
+  public void test_make_carrier() {
+    V2ShipFactory f = new V2ShipFactory();
+    Placement v1_2 = new Placement(new Coordinate(1, 2), 'U');
+    Ship<Character> dst = f.makeCarrier(v1_2);
+    checkShip(dst, "Carrier", 'c', new Coordinate(1, 2), new Coordinate(2, 2), new Coordinate(3, 2),
+        new Coordinate(4, 2), new Coordinate(3, 3), new Coordinate(4, 3), new Coordinate(5, 3));
+  }
+
+  private void checkShip(Ship<Character> testShip, String expectedName,
+      char expectedLetter, Coordinate... expectedLocs) {
+    assertEquals(testShip.getName(), expectedName);
+    for (int i = 0; i < expectedLocs.length; i++) {
+      assertEquals(testShip.getDisplayInfoAt(expectedLocs[i], true), expectedLetter);
+    }
+  }
+
+}

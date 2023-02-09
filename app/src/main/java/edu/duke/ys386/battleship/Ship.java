@@ -68,4 +68,34 @@ public interface Ship<T> {
    */
   public Iterable<Coordinate> getCoordinates();
 
+  /**
+   * get upperleft position of the ship
+   * 
+   * @return position
+   */
+  public Coordinate getPosition();
+
+  /**
+   * get orientation of a ship
+   * 
+   * @return orientation
+   */
+  public Character getOrientation();
+
+  public int getHeight();
+
+  public int getWidth();
+
+  /**
+   * move the ship to a new position
+   * 
+   * @param c the position to move
+   */
+  public void moveTo(Coordinate c);
+
+  public void rotateOneRightAngleClockwise();
+
+  public char getNextOrientation();
+
+  public void rotateShip(char orientation)throws IllegalArgumentException;
 }

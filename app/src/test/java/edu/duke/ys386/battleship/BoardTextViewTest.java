@@ -2,7 +2,6 @@ package edu.duke.ys386.battleship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -48,9 +47,9 @@ public class BoardTextViewTest {
     Board<Character> b1 = new BattleShipBoard<Character>(2, 2, 'X');
     BoardTextView view = new BoardTextView(b1);
     String expectedHeader = "  0|1\n";
-    RectangleShip<Character> s1 = new RectangleShip<Character>(new Coordinate(1, 1), 's', '*');
-    RectangleShip<Character> s2 = new RectangleShip<Character>(new Coordinate(1, 0), 's', '*');
-    RectangleShip<Character> s3 = new RectangleShip<Character>(new Coordinate(0, 0), 's', '*');
+    RectangleShip<Character> s1 = new RectangleShip<Character>(new Coordinate(1, 1), 's', '*','v');
+    RectangleShip<Character> s2 = new RectangleShip<Character>(new Coordinate(1, 0), 's', '*','v');
+    RectangleShip<Character> s3 = new RectangleShip<Character>(new Coordinate(0, 0), 's', '*','v');
 
     assertEquals("", b1.tryAddShip(s1));
     assertEquals("", b1.tryAddShip(s2));
@@ -64,7 +63,7 @@ public class BoardTextViewTest {
 
   @Test
   public void test_display_enemy_board() {
-    Board b = new BattleShipBoard<Character>(4, 3, 'X');
+    Board<Character> b = new BattleShipBoard<Character>(4, 3, 'X');
     V1ShipFactory sf = new V1ShipFactory();
     Ship<Character> s1 = sf.makeSubmarine(new Placement("b0h"));
     Ship<Character> s2 = sf.makeDestroyer(new Placement("A3v"));

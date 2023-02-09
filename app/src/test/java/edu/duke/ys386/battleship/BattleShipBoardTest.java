@@ -24,11 +24,11 @@ public class BattleShipBoardTest {
   public void test_try_add_ship() {
     Board<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
 
-    RectangleShip<Character> s1 = new RectangleShip<Character>(new Coordinate(1, 2), 's', '*');
-    RectangleShip<Character> s2 = new RectangleShip<Character>(new Coordinate(3, 4), 's', '*');
-    RectangleShip<Character> s3 = new RectangleShip<Character>(new Coordinate(0, 0), 's', '*');
-    RectangleShip<Character> s4 = new RectangleShip<Character>(new Coordinate(-5, 0), 's', '*');
-    RectangleShip<Character> s5 = new RectangleShip<Character>(new Coordinate(0, -5), 's', '*');
+    RectangleShip<Character> s1 = new RectangleShip<Character>(new Coordinate(1, 2), 's', '*','v');
+    RectangleShip<Character> s2 = new RectangleShip<Character>(new Coordinate(3, 4), 's', '*','v');
+    RectangleShip<Character> s3 = new RectangleShip<Character>(new Coordinate(0, 0), 's', '*','v');
+    RectangleShip<Character> s4 = new RectangleShip<Character>(new Coordinate(-5, 0), 's', '*','v');
+    RectangleShip<Character> s5 = new RectangleShip<Character>(new Coordinate(0, -5), 's', '*','v');
 
     assertEquals("", b1.tryAddShip(s1));
     assertNotEquals("", b1.tryAddShip(s1));
@@ -41,9 +41,9 @@ public class BattleShipBoardTest {
   @Test
   void test_what_ls_at() {
     BattleShipBoard<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
-    RectangleShip<Character> s1 = new RectangleShip<Character>(new Coordinate(1, 2), 's', '*');
-    RectangleShip<Character> s2 = new RectangleShip<Character>(new Coordinate(3, 4), 's', '*');
-    RectangleShip<Character> s3 = new RectangleShip<Character>(new Coordinate(0, 0), 's', '*');
+    RectangleShip<Character> s1 = new RectangleShip<Character>(new Coordinate(1, 2), 's', '*','v');
+    RectangleShip<Character> s2 = new RectangleShip<Character>(new Coordinate(3, 4), 's', '*','v');
+    RectangleShip<Character> s3 = new RectangleShip<Character>(new Coordinate(0, 0), 's', '*','v');
 
     Character[][] e1 = new Character[][] { { null, null, null, null, null, null, null, null, null, null },
         { null, null, null, null, null, null, null, null, null, null },
@@ -134,7 +134,7 @@ public class BattleShipBoardTest {
   }
 
   @Test 
-  public void check_all_sunk(){
+  public void test_check_all_sunk(){
     BattleShipBoard<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
     V1ShipFactory shipFactory = new V1ShipFactory();
     Ship<Character> s1 = shipFactory.createShip(new Placement("a0h"), 1, 2, 'l', "testShip");
@@ -143,5 +143,20 @@ public class BattleShipBoardTest {
     assertFalse(b1.shipAllSunk());
     b1.fireAt(new Coordinate("A0"));
     assertTrue(b1.shipAllSunk());
+  }
+
+  @Test
+  public void test_move_ship(){
+    BattleShipBoard<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
+    V2ShipFactory shipFactory = new V2ShipFactory();
+    Ship<Character> s1 = shipFactory.makeBattleship(new Placement(new Coordinate(5,6), 'U'));
+    Ship<Character> s2 = shipFactory.makeBattleship(new Placement(new Coordinate(13,2), 'U'));
+    b1.tryAddShip(s1);
+    b1.fireAt(new Coordinate(6,6));
+    b1.tryAddShip(s2);
+    assertThrows(IllegalArgumentException.class, ()->b1.moveShip(s1,  new Placement("a0h")));
+    b1.moveShip(s1,  new Placement("a0l"));
+    assertEquals(s1.getDisplayInfoAt(new Coordinate(2, 1), true), '*');
+    assertNotEquals("", b1.moveShip(s1, new Placement(new Coordinate(13,2), 'U')));
   }
 }

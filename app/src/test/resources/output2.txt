@@ -1,24 +1,694 @@
-Where would you like to put your ship?
-  0|1|2|3|4|5|6|7|8|9
-A  | | | | | | | | |  A
-B  | | | | | | | | |  B
-C  | | | | | | | | |  C
-D  | | | | | | | |s|  D
-E  | | | | | | | | |  E
-F  | | | | | | | | |  F
-G  | | | | | | | | |  G
-H  | | | | | | | | |  H
-I  | | | | | | | | |  I
-J  | | | | | | | | |  J
-K  | | | | | | | | |  K
-L  | | | | | | | | |  L
-M  | | | | | | | | |  M
-N  | | | | | | | | |  N
-O  | | | | | | | | |  O
-P  | | | | | | | | |  P
-Q  | | | | | | | | |  Q
-R  | | | | | | | | |  R
-S  | | | | | | | | |  S
-T  | | | | | | | | |  T
-  0|1|2|3|4|5|6|7|8|9
+Please enter a number to choose a mode
 
+1: human vs human
+2: human vs computer
+3: computer vs human
+4: computer vs computer
+
+Your choice is:
+
+A used a special action!
+
+B used a special action!
+
+A used a special action!
+
+B used a special action!
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A hit Battleship at (2, 0).
+
+B hit Battleship at (2, 0).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A hit Battleship at (7, 0).
+
+B hit Battleship at (7, 0).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A used a special action!
+
+B used a special action!
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A hit Battleship at (2, 1).
+
+B hit Battleship at (2, 1).
+
+A hit Battleship at (3, 1).
+
+B hit Battleship at (3, 1).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A hit Battleship at (6, 1).
+
+B hit Battleship at (6, 1).
+
+A hit Battleship at (7, 1).
+
+B hit Battleship at (7, 1).
+
+A missed.
+
+B missed.
+
+A hit Submarine at (9, 1).
+
+B hit Submarine at (9, 1).
+
+A hit Submarine at (10, 1).
+
+B hit Submarine at (10, 1).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A used a special action!
+
+B used a special action!
+
+A hit Submarine at (0, 2).
+
+B hit Submarine at (0, 2).
+
+A hit Submarine at (1, 2).
+
+B hit Submarine at (1, 2).
+
+A hit Battleship at (2, 2).
+
+B hit Battleship at (2, 2).
+
+A hit Destroyer at (3, 2).
+
+B hit Destroyer at (3, 2).
+
+A hit Destroyer at (4, 2).
+
+B hit Destroyer at (4, 2).
+
+A hit Destroyer at (5, 2).
+
+B hit Destroyer at (5, 2).
+
+A missed.
+
+B missed.
+
+A hit Battleship at (7, 2).
+
+B hit Battleship at (7, 2).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A hit Destroyer at (0, 3).
+
+B hit Destroyer at (0, 3).
+
+A hit Destroyer at (1, 3).
+
+B hit Destroyer at (1, 3).
+
+A hit Destroyer at (2, 3).
+
+B hit Destroyer at (2, 3).
+
+A hit Carrier at (3, 3).
+
+B hit Carrier at (3, 3).
+
+A hit Carrier at (4, 3).
+
+B hit Carrier at (4, 3).
+
+A hit Carrier at (5, 3).
+
+B hit Carrier at (5, 3).
+
+A hit Carrier at (6, 3).
+
+B hit Carrier at (6, 3).
+
+A hit Carrier at (7, 3).
+
+B hit Carrier at (7, 3).
+
+A hit Carrier at (8, 3).
+
+B hit Carrier at (8, 3).
+
+A hit Carrier at (9, 3).
+
+B hit Carrier at (9, 3).
+
+A hit Carrier at (10, 3).
+
+B hit Carrier at (10, 3).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A hit Battleship at (0, 4).
+
+B hit Battleship at (0, 4).
+
+A hit Battleship at (1, 4).
+
+B hit Battleship at (1, 4).
+
+A hit Battleship at (2, 4).
+
+B hit Battleship at (2, 4).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A hit Carrier at (5, 4).
+
+B hit Carrier at (5, 4).
+
+A hit Carrier at (6, 4).
+
+B hit Carrier at (6, 4).
+
+A hit Carrier at (7, 4).
+
+B hit Carrier at (7, 4).
+
+A hit Carrier at (8, 4).
+
+B hit Carrier at (8, 4).
+
+A hit Carrier at (9, 4).
+
+B hit Carrier at (9, 4).
+
+A hit Carrier at (10, 4).
+
+B hit Carrier at (10, 4).
+
+A hit Carrier at (11, 4).
+
+B hit Carrier at (11, 4).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A hit Destroyer at (0, 5).
+
+B hit Destroyer at (0, 5).
+
+A hit Battleship at (1, 5).
+
+B hit Battleship at (1, 5).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A hit Carrier at (8, 5).
+
+B hit Carrier at (8, 5).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A hit Destroyer at (0, 6).
+
+B hit Destroyer at (0, 6).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A hit Carrier at (7, 6).
+
+B hit Carrier at (7, 6).
+
+A hit Carrier at (8, 6).
+
+B hit Carrier at (8, 6).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A hit Destroyer at (0, 7).
+
+B hit Destroyer at (0, 7).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A hit Carrier at (7, 7).
+
+B hit Carrier at (7, 7).
+
+A hit Carrier at (8, 7).
+
+B hit Carrier at (8, 7).
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A missed.
+
+B missed.
+
+A win!

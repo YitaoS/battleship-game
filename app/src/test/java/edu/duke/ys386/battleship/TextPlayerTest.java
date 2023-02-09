@@ -10,8 +10,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.StringReader;
-
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class TextPlayerTest {
@@ -34,17 +32,34 @@ public class TextPlayerTest {
   }
 
   @Test
+  void test_read_choice() throws IOException {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    TextPlayer player = createTextPlayer(10, 20, "M\ngG\n", bytes);
+    String prompt = "Please enter a choice:";
+    assertEquals(player.readActionChoice(prompt),"M");
+    assertEquals(prompt+'\n', bytes.toString()); // should have printed prompt and newline
+    assertThrows(IOException.class, ()->player.readActionChoice(prompt));
+    assertThrows(IOException.class, ()->player.readActionChoice(prompt));
+  }
+
+  @Test
   void test_do_one_placement() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(10, 20, "B2V\nC8H\na4v\n", bytes);
-    V1ShipFactory shipFactory = new V1ShipFactory();
+    TextPlayer player = createTextPlayer(10, 20, "B2V\nC8H\na4U\n", bytes);
+    V2ShipFactory shipFactory = new V2ShipFactory();
     player.doOnePlacement("Destroyer", (p) -> shipFactory.makeDestroyer(p));
-    AbstractShipFactory<Character> asf = new V1ShipFactory();
+    AbstractShipFactory<Character> asf = new V2ShipFactory();
     Board<Character> tb = new BattleShipBoard<>(10, 20, 'X');
     Ship<Character> rts = asf.makeDestroyer(new Placement("B2V"));
     tb.tryAddShip(rts);
     BoardTextView btv = new BoardTextView(tb);
     String s = "Player A where do you want to place a Destroyer?\n" + btv.displayMyOwnBoard();
+    assertEquals(bytes.toString(), s);
+    assertThrows(IllegalArgumentException.class, ()->player.doOnePlacement("Carrier", (p) -> shipFactory.makeCarrier(p)));
+    player.doOnePlacement("Carrier", (p) -> shipFactory.makeCarrier(p));
+    Ship<Character> rts1 = asf.makeCarrier(new Placement("A4u"));
+    tb.tryAddShip(rts1);
+    s +="Player A where do you want to place a Carrier?\n"+ "Player A where do you want to place a Carrier?\n"+btv.displayMyOwnBoard();
     assertEquals(bytes.toString(), s);
   }
 
@@ -59,8 +74,8 @@ public class TextPlayerTest {
     BufferedReader input = new BufferedReader(new StringReader(inputData));
     PrintStream output = new PrintStream(bytes, true);
     Board<Character> board = new BattleShipBoard<Character>(w, h, 'X');
-    V1ShipFactory shipFactory = new V1ShipFactory();
-    return new TextPlayer("A", board, input, output, shipFactory, 2, 3, 0, 0);
+    V2ShipFactory shipFactory = new V2ShipFactory();
+    return new TextPlayer("A", board, input, output, shipFactory, 2, 3, 0, 0,true);
   }
 
   @Test
@@ -68,7 +83,7 @@ public class TextPlayerTest {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     TextPlayer player = createTextPlayer(10, 20, "A0V\nA1V\nA4v\nA7V\nA8V\n", bytes);
     player.doPlacementPhase();
-    AbstractShipFactory<Character> asf = new V1ShipFactory();
+    AbstractShipFactory<Character> asf = new V2ShipFactory();
     Board<Character> tb = new BattleShipBoard<>(10, 20, 'X');
     Ship<Character> rts1 = asf.makeSubmarine(new Placement("A0V"));
     Ship<Character> rts2 = asf.makeSubmarine(new Placement("A1v"));
@@ -133,36 +148,51 @@ public class TextPlayerTest {
   @Test
   void test_do_one_attack() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player1 = createTextPlayer(10, 20, "B2V\nC6\n", bytes);
+    TextPlayer player1 = createTextPlayer(10, 20, "B2V\nC6\nA9\nZ9\n", bytes);
     player1.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
     TextPlayer player2 = createTextPlayer(10, 20, "B2V\nC6H\nA4v\nD0V\nH1V\n", bytes);
     player2.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
     player2.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
-    player1.doOneAttack(player2.getBoard());
+    player1.doOneAttack(player2.getBoard(),new String[1],true);
     assertEquals(player2.theBoard.whatIsAtForSelf(new Coordinate("C6")), '*');
     assertEquals(player2.theBoard.whatIsAtForEnemy(new Coordinate("C6")), 's');
+    player1.doOneAttack(player2.getBoard(),new String[1],true);
     assertThrows(IOException.class, () -> {
-      player1.doOneAttack(player2.getBoard());
+      player1.doOneAttack(player2.getBoard(),new String[1],true);
     });
+    assertThrows(IOException.class, () -> {
+      player1.doOneAttack(player2.getBoard(),new String[1],true);
+    });
+    
   }
 
   @Test
-  void test_play_one_turn() {
+  void test_do_one_sonar_scan() throws IOException {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player1 = createTextPlayer(10, 20,
-        "B2V\nC6H\nA4v\nD0V\nH1V\nc8v\n\nC6\nZ6\nA5\n", bytes);
-    player1.doPlacementPhase();
-    TextPlayer player2 = createTextPlayer(10, 20, "B2V\nC6H\nA4v\nD0V\nH1V\n",
-        bytes);
-    player2.doPlacementPhase();
-    player1.playOneTurn(player2.getBoard(), player2.getView(),
-        player2.getName());
-    player1.playOneTurn(player2.getBoard(), player2.getView(),
-        player2.getName());
-    assertEquals(player2.getBoard().whatIsAtForSelf(new Coordinate("C6")), '*');
-    assertEquals(player2.getBoard().whatIsAtForEnemy(new Coordinate("C6")), 's');
-    assertEquals(player2.getBoard().whatIsAtForSelf(new Coordinate("Z6")), null);
-    assertEquals(player2.getBoard().whatIsAtForEnemy(new Coordinate("Z6")), null);
+    TextPlayer player1 = createTextPlayer(10, 20, "B2V\nb3u\nZ2\n", bytes);
+    player1.doOnePlacement("Submarine", player1.shipCreationFns.get("Submarine"));
+    player1.doOnePlacement("Battleship", player1.shipCreationFns.get("Battleship"));
+    TextPlayer player2 = createTextPlayer(10, 20, "B2V\nC6H\nb1\nD0V\nH1V\n", bytes);
+    player2.doOnePlacement("Submarine", player2.shipCreationFns.get("Submarine"));
+    player2.doOnePlacement("Submarine", player2.shipCreationFns.get("Submarine"));
+    player2.doOneSonarScan(player1.theBoard);
+    assertThrows(IOException.class, ()->player1.doOneSonarScan(player2.theBoard));
+  }
+
+  @Test
+  void test_move_one_ship() throws IOException {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    TextPlayer player1 = createTextPlayer(10, 20, "B2l\nA9\nC2\nl7d\nl7\nZ2l\n", bytes);
+    player1.doOnePlacement("TestShip", player1.shipCreationFns.get("Carrier"));
+    assertThrows(IOException.class, ()->player1.moveOneShip());
+    player1.moveOneShip();
+    AbstractShipFactory<Character> asf = new V2ShipFactory();
+    Board<Character> tb = new BattleShipBoard<>(10, 20, 'X');
+    Ship<Character> rts = asf.makeCarrier(new Placement("l7d"));
+    tb.tryAddShip(rts);
+    BoardTextView btv = new BoardTextView(tb);
+    assertEquals(btv.displayMyOwnBoard(),player1.view.displayMyOwnBoard());
+    assertThrows(IOException.class, ()->player1.moveOneShip());
   }
 
 }

@@ -32,9 +32,9 @@ public class Placement {
     if (o >= 'a' && o <= 'z') {
       o = (char) (o + 'A' - 'a');
     }
-    if (o != 'V' && o != 'H') {
+    if (o != 'U' && o != 'D' && o != 'L' && o!= 'R' && o!= 'V' && o != 'H') {
       throw new IllegalArgumentException(
-          "Orientation should be vertical (v or V) or horizonal(h or H),but is :" + o + " !");
+          "Orientation should be U,L,R,D or V,H  ,but is :" + o + " !");
     }
     where = w;
     orientation = o;
@@ -55,9 +55,9 @@ public class Placement {
     if (o >= 'a' && o <= 'z') {
       o = (char) (o + 'A' - 'a');
     }
-    if (o != 'V' && o != 'H') {
+    if (o != 'U' && o != 'D' && o != 'L' && o!= 'R' && o!= 'V' && o != 'H') {
       throw new IllegalArgumentException(
-          "Orientation should be vertical or horizonal(v or V), but your Orientation is: " + o);
+          "Orientation should be U,L,R,D or V,H ,but is :" + o + " !");
     }
     orientation = o;
     String coorString = descr.substring(0, 2);
