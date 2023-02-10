@@ -10,11 +10,11 @@ import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.StringReader;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.ResourceAccessMode;
 import org.junit.jupiter.api.parallel.ResourceLock;
@@ -38,6 +38,20 @@ class AppTest {
     player2.theBoard.fireAt(new Coordinate("c2"));
     player1.doOnePlacement("TestShip", player1.shipCreationFns.get("Submarine"));
     assertEquals(app.checkWhoWin(), "A");
+  }
+
+  @Test
+  public void test_set_player(){
+    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    App app1 = App.setPlayers("1", input);
+    App app2 = App.setPlayers("2", input);
+    App app3 = App.setPlayers("3", input);
+    assertEquals(app1.player1.isHuman, true);
+    assertEquals(app1.player2.isHuman, true);
+    assertEquals(app2.player1.isHuman, true);
+    assertEquals(app2.player2.isHuman, false);
+    assertEquals(app3.player1.isHuman, false);
+    assertEquals(app3.player2.isHuman, true);
   }
   @Test
   @ResourceLock(value = Resources.SYSTEM_OUT, mode = ResourceAccessMode.READ_WRITE)
@@ -66,6 +80,7 @@ class AppTest {
     String actual = bytes.toString();
     assertEquals(expected, actual);
   }
+
   @Test
   @ResourceLock(value = Resources.SYSTEM_OUT, mode = ResourceAccessMode.READ_WRITE)
   void test_main_computer_vs_computer() throws IOException {
@@ -93,7 +108,6 @@ class AppTest {
     String actual = bytes.toString();
     assertEquals(expected, actual);
   }
-
   private TextPlayer createTextPlayer(String name, int w, int h, String inputData, OutputStream bytes) {
     BufferedReader input = new BufferedReader(new StringReader(inputData));
     PrintStream output = new PrintStream(bytes, true);

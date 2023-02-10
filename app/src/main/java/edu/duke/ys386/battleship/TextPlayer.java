@@ -79,6 +79,9 @@ public class TextPlayer {
     this.isHuman = isHuman;
   }
 
+  /**
+   * set up the skill uses time limits for the textplayer
+   */
   protected void setupSkillUses(){
     skillUses.put("M",3);
     skillUses.put("S",3);
@@ -140,7 +143,13 @@ public class TextPlayer {
     }
     return new Coordinate(s);
   }
-
+  /**
+   * read a action choice for a turn
+   * 
+   * @param prompt the prompt to hint the player
+   * @return  the string of choice
+   * @throws IOException throw if the choice is invalid
+   */
   public String readActionChoice(String prompt) throws IOException{
     out.println(prompt);
     String s = inputReader.readLine();
@@ -234,6 +243,11 @@ public class TextPlayer {
     out.println(prompt);
   }
 
+  /**
+   * do the action of moving a ship
+   * 
+   * @throws IOException any illegal input
+   */
   public void moveOneShip()throws IOException{
     Coordinate coordiOfShip = readCoordinate("Player " + name + " Which ship do you want to move?\n Please enter a coordinate occupied by the ship");
     Ship<Character> s = theBoard.getShip(coordiOfShip);
@@ -249,6 +263,12 @@ public class TextPlayer {
     out.println(prompt);
   }
 
+  /**
+   * do the action of sonar scan an area in opponent's board
+   * 
+   * @param enemyBoard the opponent board
+   * @throws IOException any invalid input
+   */
   public void doOneSonarScan(Board<Character> enemyBoard)throws IOException{
     Coordinate coordiOfShip = readCoordinate("Player " + name + "Which area do you want to scan?\nPlease enter a coordinate as the center of the sonar scan area");
     String s = enemyBoard.checkIfWithinBorder(coordiOfShip);

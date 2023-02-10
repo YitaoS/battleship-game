@@ -42,9 +42,17 @@ public class App {
     }
     return null;
   }
-
-  public static TextPlayer createComputerPlayer(String name,int w, int h, OutputStream bytes){
-    String inputData = getComputerInput();
+  /**
+   * create a computer textplayer
+   * 
+   * @param name name of the computer
+   * @param w width of the board
+   * @param h height of the board
+   * @param bytes the output stream for the computer player
+   * @param inputData the input string for the player
+   * @return a pre-specified input player
+   */
+  public static TextPlayer createComputerPlayer(String name,int w, int h, OutputStream bytes,String inputData){
     BufferedReader input = new BufferedReader(new StringReader(inputData));
     PrintStream output = new PrintStream(bytes, true);
     Board<Character> board = new BattleShipBoard<Character>(w, h, 'X');
@@ -52,6 +60,11 @@ public class App {
     return new TextPlayer(name, board, input, output, shipFactory, 2, 3, 3, 3,false);
   }
 
+  /**
+   * get a pre-specified input string for a game player
+   * 
+   * @return the input string
+   */
   public static String getComputerInput(){
     StringBuilder sb = new StringBuilder();
     String placePhaseString = "a1v\na2v\na3v\na5h\nd2v\nc0d\na4r\ng0u\nd3u\nh3u\nh4l\n";
@@ -69,6 +82,35 @@ public class App {
     return sb.toString();
   }
 
+  /**
+   * get another pre-specified input string for a game player
+   * 
+   * @return the input string
+   */
+  public static String getAnotherComputerInput(){
+    StringBuilder sb = new StringBuilder();
+    String placePhaseString = "a1v\na2v\na3v\na5h\nd2v\nc0d\na4r\ng0u\nd3u\nh3u\nh4l\n";
+    sb.append(placePhaseString);
+    for(int i = 0; i < 10; i++){
+      sb.append("s\nd5\n");
+      for(int j = 0; j < 20;j++){
+        sb.append("f\n");
+        sb.append((char)('a'+j));
+        sb.append((char)('0'+i));
+        sb.append('\n');
+      }
+    }
+    return sb.toString();
+  }
+
+  /**
+   * try to read a model choice from input
+   * 
+   * @param prompt the prompt for player 
+   * @param input the buffer of input
+   * @return the input choice
+   * @throws IOException throw if input is invalid
+   */
   public static String tryReadModeChoice(String prompt,BufferedReader input)throws IOException{
     System.out.print(prompt);
     String s = input.readLine();
@@ -78,7 +120,13 @@ public class App {
     return s;
   }
 
-  public static String readModeChoice(BufferedReader input)throws IOException{
+  /**
+   * read a model choice from input
+   * 
+   * @param input the buffer of input
+   * @return the choice
+   */
+  public static String readModeChoice(BufferedReader input){
     String choice = "";
     while(true){
       try{
@@ -92,11 +140,18 @@ public class App {
     return choice;
   }
 
+  /**
+   * get a app game with 2 players according to choice
+   * 
+   * @param choice the model choice
+   * @param input the input for human player
+   * @return  app with 2 players
+   */
   public static App setPlayers(String choice,BufferedReader input){
     TextPlayer p1 = new TextPlayer("A", new BattleShipBoard<Character>(10, 20, 'X'), input, System.out, new V2ShipFactory(), 2, 3, 3, 3,true);
     TextPlayer p2 = new TextPlayer("B", new BattleShipBoard<Character>(10, 20, 'X'), input, System.out, new V2ShipFactory(), 2, 3, 3, 3,true);
-    TextPlayer c1 = createComputerPlayer("A",10, 20,  new ByteArrayOutputStream());
-    TextPlayer c2 = createComputerPlayer("B",10, 20,  new ByteArrayOutputStream());
+    TextPlayer c1 = createComputerPlayer("A",10, 20,  new ByteArrayOutputStream(),getComputerInput());
+    TextPlayer c2 = createComputerPlayer("B",10, 20,  new ByteArrayOutputStream(),getAnotherComputerInput());
 
     if(choice.equals("1")){
       return new App(p1,p2);

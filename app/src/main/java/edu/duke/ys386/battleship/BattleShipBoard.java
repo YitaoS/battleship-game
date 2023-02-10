@@ -26,12 +26,22 @@ public class BattleShipBoard<T> implements Board<T> {
 
   private final int height;
 
+  /**
+   * get height of the board
+   * 
+   * @return height
+   */
   public int getHeight() {
     return height;
   }
 
   private final PlacementRuleChecker<T> placementChecker;
 
+  /**
+   * get placement rule checker of the board
+   * 
+   * @return placement rule checker
+   */
   public PlacementRuleChecker<T> getPlacementRuleChecker() {
     return placementChecker;
   }
@@ -43,10 +53,25 @@ public class BattleShipBoard<T> implements Board<T> {
   // return enemyMisses;
   // }
 
+  /**
+   * create a battleship board
+   * 
+   * @param w width
+   * @param h height
+   * @param missInfo the information to display when opponent missed somewhere
+   */
   public BattleShipBoard(int w, int h, T missInfo) {
     this(w, h, new InBoundsRuleChecker<T>(new NoCollisionRuleChecker<>(null)), missInfo);
   }
 
+  /**
+   * create a battleship board
+   * 
+   * @param width
+   * @param height
+   * @param prc the placement rule checker
+   * @param missInfo the information to display when opponent missed somewhere
+   */
   public BattleShipBoard(int width, int height, PlacementRuleChecker<T> prc, T missInfo) {
     if (width <= 0) {
       throw new IllegalArgumentException("BattleShipBoard's width must be positive but is " + width);
@@ -63,6 +88,7 @@ public class BattleShipBoard<T> implements Board<T> {
     setupScanArea();
   }
 
+  /** set up the area to scan*/
   public void setupScanArea(){
     for(int i = 0; i < 4;i++){
       for(int j = -3 + i; j < 4 - i; j++){
@@ -104,6 +130,14 @@ public class BattleShipBoard<T> implements Board<T> {
     return whatIsAt(where, true);
   }
 
+  /**
+   * return what is at the coordinate on board
+   * 
+   * @param where is the coordinate to check
+   * @param isSelf true if display for self Or false
+   * @return null if there is no ship in where. Otherwise, return
+   *         the information of the ship there
+   */
   protected T whatIsAt(Coordinate where, boolean isSelf) {
     for (Ship<T> s : myShips) {
       if (s.occupiesCoordinates(where)) {
@@ -157,6 +191,12 @@ public class BattleShipBoard<T> implements Board<T> {
     return null;
   }
 
+  /**
+   * Scan a area around c and report the squares took up by all kinds of ship in the area
+   * 
+   * @param c the central coordinate 
+   * @return report about
+   */
   @Override
   public HashMap<String,Integer> sonarScan(Coordinate c){
     HashMap<String,Integer> appearTimes= new HashMap<>();
@@ -193,6 +233,12 @@ public class BattleShipBoard<T> implements Board<T> {
     return true;
   }
 
+  /**
+   * get the ship occupy position c
+   * 
+   * @param c
+   * @return ship if exsit, Otherwise null
+   */
   @Override
   public Ship<T> getShip(Coordinate c) {
     for (Ship<T> ship : myShips) {
@@ -203,7 +249,11 @@ public class BattleShipBoard<T> implements Board<T> {
     return null;
   }
 
-  //todo
+  /**
+   * move the ship to a new position
+   * 
+   * @param c the position to move
+   */
   @Override
   public String moveShip(Ship<T> toMove, Placement p)throws IllegalArgumentException {
     myShips.remove(toMove);

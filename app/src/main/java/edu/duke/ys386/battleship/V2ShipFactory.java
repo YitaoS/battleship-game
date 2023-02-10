@@ -1,6 +1,8 @@
 package edu.duke.ys386.battleship;
 
-
+/**
+ * this class is for the ship factory in version 2 battleship game
+ */
 public class V2ShipFactory implements AbstractShipFactory<Character> {
 
   protected Ship<Character> createShip(Placement where, int w, int h, char letter, String name) throws IllegalArgumentException{

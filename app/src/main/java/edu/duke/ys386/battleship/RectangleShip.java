@@ -2,7 +2,11 @@ package edu.duke.ys386.battleship;
 
 import java.util.HashSet;
 
-
+/**
+ * this class is for the ships are rectangle
+ * they all only need width and height to decide their ship
+ * they only have 2 orientations: verticle and horizonal
+ */
 public class RectangleShip<T> extends BasicShip<T> {
   static HashSet<Coordinate> makeCoords(Coordinate upperLeft, int width, int height) {
     HashSet<Coordinate> ans = new HashSet<>();

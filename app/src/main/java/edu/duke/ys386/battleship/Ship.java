@@ -82,8 +82,18 @@ public interface Ship<T> {
    */
   public Character getOrientation();
 
+  /**
+   * get height of the ship
+   * 
+   * @return height
+   */
   public int getHeight();
 
+  /**
+   * get width of the ship
+   * 
+   * @return width
+   */
   public int getWidth();
 
   /**
@@ -93,9 +103,23 @@ public interface Ship<T> {
    */
   public void moveTo(Coordinate c);
 
+  /**
+   * rotate the ship 90 degree clockwise
+   * 
+   */
   public void rotateOneRightAngleClockwise();
 
+  /**
+   * get thr orientation of the ship
+   * @return char represents the orientation
+   */
   public char getNextOrientation();
 
+  /**
+   * rotate the ship to a specific orientation
+   * 
+   * @param orientation
+   * @throws IllegalArgumentException throws if the orientation is illegal
+   */
   public void rotateShip(char orientation)throws IllegalArgumentException;
 }
