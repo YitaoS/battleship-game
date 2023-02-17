@@ -1,0 +1,39 @@
+package edu.duke.ys386.battleship;
+
+public class Coordinate {
+  private final int row;
+
+  public int getRow() {
+    return row;
+  }
+
+  private final int column;
+
+  public int getCol() {
+    return column;
+  }
+
+  public Coordinate(int r, int c) {
+    row = r;
+    column = c;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o.getClass().equals(getClass())) {
+      Coordinate c = (Coordinate) o;
+      return row == c.row && column == c.column;
+    }
+    return false;
+  }
+  @Override
+  public String toString() {
+    return "(" + row + ", " + column + ")";
+  }
+
+  @Override
+  public int hashCode() {
+    return toString().hashCode();
+  }
+
+}

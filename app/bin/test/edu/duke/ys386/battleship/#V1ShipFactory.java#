@@ -1,0 +1,13 @@
+package edu.duke.ys386.battleship;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+public class V1ShipFactory implements AbstractShipFactory<Character>{
+  @Test
+  public void test_() {
+
+  }
+
+}

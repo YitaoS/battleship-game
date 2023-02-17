@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="612f8ab3-d99e-4eb2-af64-7164c8170059" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/BasicShip.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/BasicShip.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/BattleShipBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/BattleShipBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/BoardTextView.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/BoardTextView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/Coordinate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/Coordinate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/Placement.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/Placement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/Ship.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/edu/duke/ys386/battleship/Ship.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/edu/duke/ys386/battleship/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/edu/duke/ys386/battleship/AppTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/edu/duke/ys386/battleship/BattleShipBoardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/edu/duke/ys386/battleship/BattleShipBoardTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/edu/duke/ys386/battleship/BoardTextViewTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/edu/duke/ys386/battleship/BoardTextViewTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/edu/duke/ys386/battleship/CoordinateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/edu/duke/ys386/battleship/CoordinateTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/edu/duke/ys386/battleship/PlacementTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/edu/duke/ys386/battleship/PlacementTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/duke/ys386/battleship/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/duke/ys386/battleship/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/duke/ys386/battleship/BattleShipBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/duke/ys386/battleship/BattleShipBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/duke/ys386/battleship/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/duke/ys386/battleship/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/duke/ys386/battleship/TextPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/duke/ys386/battleship/TextPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/duke/ys386/battleship/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/duke/ys386/battleship/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/duke/ys386/battleship/BattleShipBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/duke/ys386/battleship/BattleShipBoardTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2L6zYMDdSkgyJZebJUjHgLcPBZ4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/yitaoshi/ece651-sp20-ys386-battleship/app"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="612f8ab3-d99e-4eb2-af64-7164c8170059" name="Changes" comment="" />
+      <created>1675206367284</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675206367284</updated>
+    </task>
+    <servers />
+  </component>
+</project>

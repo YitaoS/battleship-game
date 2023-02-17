@@ -1,0 +1,33 @@
+package edu.duke.ys386.battleship;
+
+public class V1ShipFactory implements AbstractShipFactory<Character> {
+
+  protected Ship<Character> createShip(Placement where, int w, int h, char letter, String name) {
+    Ship<Character> s = new RectangleShip<Character>(name, where. ge tW here(),h,letter);
+  }
+
+  @Override
+  public Ship<Character> makeSubmarine(Placement where) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Ship<Character> makeBattleship(Placement where) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Ship<Character> makeCarrier(Placement where) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Ship<Character> makeDestroyer(Placement where) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+}
